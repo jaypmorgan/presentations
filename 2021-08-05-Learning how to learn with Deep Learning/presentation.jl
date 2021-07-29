@@ -50,11 +50,72 @@ Jay Morgan
 5th August 2021
 """
 
+# ╔═╡ 77366d90-4c68-44f3-9950-b34c83ab9106
+md"## What does it mean to learn?"
+
+# ╔═╡ 5f72a97e-6cba-470a-8b1b-397dfbc203fe
+md"""## What is Deep Learning?
+
+
+A form of Machine Learning (ML)
+"""
+
+# ╔═╡ 61f62b79-1203-404d-93bb-9003cfa848b3
+md"""## Application of Deep Learning
+	
+Deep Learning is a good tool for when the problem is easy for the human to perform, but rather difficult to specify how it should be done. Take for instance, recongising numbers. Without thinking about, we see an image of a '8' and instantly recognise the number. But how do we tell a computer what a number '8' looks like?"""
+
+# ╔═╡ 19448838-f42e-4536-bc9e-ec34fe458c86
+html"""<img src="https://storage.googleapis.com/tfds-data/visualization/fig/mnist-3.0.1.png" width=350>
+</br>
+<sub><sup>Image reference: <a href="https://www.tensorflow.org/datasets/catalog/mnist">https://www.tensorflow.org/datasets/catalog/mnist</a></sup></sub>"""
+
+# ╔═╡ 4b41700b-9e78-424a-8668-9f19ba7a1a5e
+md"""## Other Useful Applications"""
+
+# ╔═╡ 31a57316-6d67-4dab-8ec2-f62c8cc727e2
+html"""
+<p style="float: left;"><img src="https://miro.medium.com/proxy/1*q1uVc-MU-tC-WwFp2yXJow.gif" width=300></p>
+<p style="float: left; margin-left: 10px;"><img src="https://miro.medium.com/max/573/0*vVbnVpkj-4L2Wpbw.jpg" width=311></p>
+
+<p style="clear: both; float: none;">
+</br>
+<sub><sup>Image references: <a href="https://medium.com/@albertlai631/how-do-self-driving-cars-see-13054aee2503">https://medium.com/@albertlai631/how-do-self-driving-cars-see-13054aee2503</a>
+<a href="https://medium.com/vsinghbisen/types-of-medical-diagnostic-imaging-analysis-by-deep-learning-ai-9618e1bc631">https://medium.com/vsinghbisen/types-of-medical-diagnostic-imaging-analysis-by-deep-learning-ai-9618e1bc631</a>
+</sup></sub>
+"""
+
+# ╔═╡ 1b9de539-4c46-4a63-91bf-e6126d9337cf
+md"""## Overview of today's talk
+
+- Using an example of predicting someone's height from their age, we'll create very basic predictor model.
+- This predictor will demonstrate what it means to learn.
+- Advancing on this learning process, we'll transition into basic components of Deep Learning.
+
+"""
+
 # ╔═╡ 5d042302-fc97-4e67-b5d9-3503e334c63d
 md"""
 ## Learning for a weird world
 
 Let us consider some weird reality where everyone continues to grow.
+
+We have a table of data like:
+
+|id|Name|Age|Height|
+|:-- |:-- |:-- |:-- |
+|1|John|20|150|
+|2|Jane|31|154|
+
+A little terminology:
+- Each row is an instance
+- Each column is a feature
+
+"""
+
+# ╔═╡ 9275ed71-6c6c-4284-8dd7-db87c6c6520f
+md"""## Visualising this data
+
 
 $(scatter(x, y, label = "Person", xlabel = "Age [years]", ylabel="Height [inches]",
 size = (600, 400)))
@@ -1056,7 +1117,15 @@ version = "0.9.1+5"
 # ╟─9c4b160b-0136-4e6c-8873-f9fd88c4d08f
 # ╟─6514a5d4-d7a9-49ba-9b27-e3e41dac7d5b
 # ╟─030d2519-ceb4-4ee2-b40f-c371e8bea22d
+# ╟─77366d90-4c68-44f3-9950-b34c83ab9106
+# ╟─5f72a97e-6cba-470a-8b1b-397dfbc203fe
+# ╟─61f62b79-1203-404d-93bb-9003cfa848b3
+# ╟─19448838-f42e-4536-bc9e-ec34fe458c86
+# ╟─4b41700b-9e78-424a-8668-9f19ba7a1a5e
+# ╟─31a57316-6d67-4dab-8ec2-f62c8cc727e2
+# ╟─1b9de539-4c46-4a63-91bf-e6126d9337cf
 # ╟─5d042302-fc97-4e67-b5d9-3503e334c63d
+# ╟─9275ed71-6c6c-4284-8dd7-db87c6c6520f
 # ╟─d83da1a5-ff9b-4f06-9cf9-d89128db4a06
 # ╟─813c8471-1ea2-401f-9662-81a1cd99ce4d
 # ╟─0c419de8-d683-4aa0-8ba2-580e79781b76

@@ -17,8 +17,8 @@ Learning. Therefore, you have a few choices in running the
 presentation. Firstly, if you have the [Julia](https://julialang.org/)
 programming language installed on your computer, you can download
 `presentation.jl`, and open up the Julia REPL by running `julia` from
-this same directory where `presentation.jl`. In the REPL, enter the
-following commands:
+this same directory where `presentation.jl` was downloaded to. In the
+REPL, enter the following commands:
 
 ```julia
 using Pluto;
