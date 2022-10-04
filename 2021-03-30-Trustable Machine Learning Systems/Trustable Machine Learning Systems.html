@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://blog.morganwastaken.com/assets/bctcs_presentation/presentation.html -->
+<html lang="en" class="reveal-full-page jxbavor idc0_343"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Trustable Machine Learning Systems</title>
+<meta name="author" content="(Jay Morgan)">
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./Trustable Machine Learning Systems_files/reveal.css">
+
+<link rel="stylesheet" href="./Trustable Machine Learning Systems_files/league.css" id="theme">
+
+<link rel="stylesheet" href="./Trustable Machine Learning Systems_files/presentation.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './reveal.js-master/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+<script type="text/javascript" src="./Trustable Machine Learning Systems_files/MathJax.js"></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none; box-sizing: content-box}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.MathJax_test.mjx-test-display {display: table!important}
+.MathJax_test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.MathJax_test.mjx-test-default {display: block!important; clear: both}
+.MathJax_ex_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.MathJax_em_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60em}
+.mjx-test-inline .MathJax_left_box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .MathJax_right_box {display: inline-block; width: 0; float: right}
+.mjx-test-display .MathJax_right_box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Blank; src: url('about:blank')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body style="transition: -webkit-transform 0.8s ease 0s; --slide-width:960px; --slide-height:700px;" class="reveal-viewport"><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div class="reveal slide center focused has-vertical-slides has-horizontal-slides ready" role="application" data-transition-speed="default" data-background-transition="fade" style="">
+<div class="slides" style="width: 960px; height: 700px; inset: 50% auto auto 50%; transform: translate(-50%, -50%) scale(0.917486);">
+<section id="sec-title-slide" style="top: 213px; display: block;" class="present"><h1 class="title">Trustable Machine Learning Systems</h1><h2 class="author">Jay Morgan</h2><h2 class="date">30th March 2021</h2>
+</section>
+<aside class="notes">
+<p>
+Hello, and thank you for joining me today. My name is Jay Morgan, I'm a doctoral
+candidate at swansea university, and today I will be talking about one research
+method to create trustable machine learning systems.
+</p>
+
+</aside>
+
+<section style="top: 0px; display: block;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgc6e8052" style="top: 128.5px; display: block;">
+<h2 id="orgc6e8052"><span class="section-number-2">1</span> - The Good, the bad, and the ugly</h2>
+
+<div id="org4d33c6e" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/thegoodbadugly-ml.png" alt="thegoodbadugly-ml.png">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Or perhaps as I will put it today: the good, bad and ugly of Machine Learning
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 0px; display: block;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgf434b1e" style="top: 64px; display: block;">
+<h2 id="orgf434b1e"><span class="section-number-2">2</span> - Machine Learning at its "Good"</h2>
+
+<div id="org32c5ed1" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/self-driving-car.gif" alt="self-driving-car.gif">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+Let us begin with the good.
+</p>
+
+<p>
+Machine Learning, and specifically Deep Learning, has achieved a level of speed of
+computation, a level of accuracy, and perceived intelligence, that its actually
+becoming very useful in our daily lives.
+</p>
+
+<p>
+Over the last few years we're seeing a transformation the automotive industry, where
+a big few car manufacturers are rushing to bring us unprecidented levels of
+autonomous driving.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orge38607e" style="top: 350px; display: none;">
+<h2 id="orge38607e"><span class="section-number-2">3</span> - Machine Learning at its "Ugly"</h2>
+
+<div id="orge772116" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/fgsm_panda_image.png" alt="fgsm_panda_image.png">
+</p>
+<p><span class="figure-number">Figure 3: </span><a href="https://pytorch.org/tutorials/beginner/fgsm_tutorial.html">https://pytorch.org/tutorials/beginner/fgsm_tutorial.html</a></p>
+</div>
+
+<aside class="notes">
+<p>
+But theres a twist. And the twist is this: Machine Learning and the 'intelligent'
+models they create are not intelligent, and are subject to some various forms of attacks.
+</p>
+
+<p>
+These attacks occur when specially crafted modifications are made to the input of the
+image. When these modifications are applied, the ML model will usually output a
+miss-classification with high confidence.
+</p>
+
+<p>
+These types of attacks, adversarial attacks, have been shown to be very
+effective at reducing even the-state-of-art classifier models to almost 0 zero accuracy.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org4b9d028" style="top: 350px; display: none;">
+<h2 id="org4b9d028"><span class="section-number-2">4</span> - Machine Learning at its "Bad"</h2>
+
+<div id="org779bdd4" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/signs.png" alt="signs.png">
+</p>
+<p><span class="figure-number">Figure 4: </span>Huang, X., Kwiatkowska, M., Wang, S., &amp; Wu, M. (2017, July). Safety verification of deep neural networks. In International conference on computer aided verification (pp. 3-29). Springer, Cham.</p>
+</div>
+
+<aside class="notes">
+<p>
+This presents a very serious problem for the use of ML in systems, like fully
+autonomous vehicles, where safety is paramount.
+</p>
+
+<p>
+If such a modification is made to the input used by these ML models, even as a result
+of sensor defects, the result could cost human lives.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org6a5d1d6" style="top: 350px; display: none;">
+<h2 id="org6a5d1d6"><span class="section-number-2">5</span> - A life with formal methods</h2>
+
+<div id="org5c46629" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/thegoodgoodgood-ml.png" alt="thegoodgoodgood-ml.png">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+I hope that our future aspirations that, not just of our project, but with Machine
+Learning in general, that formal methods can become the norm and uncover the
+uglyniness and so that we can transform it into all positives, all goods.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgf495470" style="top: 350px; display: none;">
+<h2 id="orgf495470"><span class="section-number-2">6</span> - What's in todays talk</h2>
+<ol>
+<li>Explanation of Adversarial examples</li>
+<li>Defining the upper-bounds on where to search for these examples</li>
+<li>Creating Neural Networks and searching for adversarial examples using
+satisfiability theories. How this can be implemented to enable verification of
+Neural Network properties.</li>
+
+</ol>
+
+<aside class="notes">
+<p>
+So in today's talk, I will give a description of what adversarial examples are, then
+a method for defining a search space in which to find them. Finally, I will introduce
+you to an open-source project to verify the existence of adversarial examples using
+satisfiability testing.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org9117e87" style="top: 350px; display: none;">
+<h2 id="org9117e87"><span class="section-number-2">7</span> - Adversarial examples (mathematical formalisation)</h2>
+
+<div id="org58e6412" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/perturbation.png" alt="perturbation.png" height="200px">
+</p>
+</div>
+
+<p>
+Given some classifier model <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;msup&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x2192;&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;&amp;#xA0;&lt;/mtext&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;{&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mo&gt;.&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;}&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 17.22em; display: inline-block;"><span style="display: inline-block; position: relative; width: 16.218em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.241em, 1016.16em, 2.597em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="texatom" id="MathJax-Span-3"><span class="mrow" id="MathJax-Span-4"><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-6" style="font-family: MathJax_Main; padding-left: 0.298em;">:</span><span class="msubsup" id="MathJax-Span-7" style="padding-left: 0.298em;"><span style="display: inline-block; position: relative; width: 2.42em; height: 0px;"><span style="position: absolute; clip: rect(3.128em, 1000.71em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="texatom" id="MathJax-Span-8"><span class="mrow" id="MathJax-Span-9"><span class="mi" id="MathJax-Span-10" style="font-family: MathJax_AMS;">R</span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.419em; left: 0.71em;"><span class="texatom" id="MathJax-Span-11"><span class="mrow" id="MathJax-Span-12"><span class="mi" id="MathJax-Span-13" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-14" style="font-size: 70.7%; font-family: MathJax_Main;">×</span><span class="mi" id="MathJax-Span-15" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">m</span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-16" style="font-family: MathJax_Main; padding-left: 0.298em;">→</span><span class="mi" id="MathJax-Span-17" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.18em;"></span></span><span class="mo" id="MathJax-Span-18" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-19" style="font-family: MathJax_Main; padding-left: 0.18em;">&nbsp;</span><span class="mi" id="MathJax-Span-20" style="font-family: MathJax_Math; font-style: italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.18em;"></span></span><span class="mo" id="MathJax-Span-21" style="font-family: MathJax_Main; padding-left: 0.298em;">∈</span><span class="mo" id="MathJax-Span-22" style="font-family: MathJax_Main; padding-left: 0.298em;">{</span><span class="mn" id="MathJax-Span-23" style="font-family: MathJax_Main;">0</span><span class="mo" id="MathJax-Span-24" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-25" style="font-family: MathJax_Main; padding-left: 0.18em;">1</span><span class="mo" id="MathJax-Span-26" style="font-family: MathJax_Main;">,</span><span class="mo" id="MathJax-Span-27" style="font-family: MathJax_Main; padding-left: 0.18em;">.</span><span class="mo" id="MathJax-Span-28" style="font-family: MathJax_Main; padding-left: 0.18em;">.</span><span class="mo" id="MathJax-Span-29" style="font-family: MathJax_Main; padding-left: 0.18em;">.</span><span class="mo" id="MathJax-Span-30" style="font-family: MathJax_Main; padding-left: 0.18em;">,</span><span class="mi" id="MathJax-Span-31" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.18em;">k</span><span class="mo" id="MathJax-Span-32" style="font-family: MathJax_Main; padding-left: 0.239em;">−</span><span class="mn" id="MathJax-Span-33" style="font-family: MathJax_Main; padding-left: 0.239em;">1</span><span class="mo" id="MathJax-Span-34" style="font-family: MathJax_Main;">}</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo>:</mo><msup><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="double-struck">R</mi></mrow><mrow class="MJX-TeXAtom-ORD"><mi>n</mi><mo>×</mo><mi>m</mi></mrow></msup><mo stretchy="false">→</mo><mi>Y</mi><mo>,</mo><mtext>&nbsp;</mtext><mi>Y</mi><mo>∈</mo><mo fence="false" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>.</mo><mo>.</mo><mo>.</mo><mo>,</mo><mi>k</mi><mo>−</mo><mn>1</mn><mo fence="false" stretchy="false">}</mo></math></span></span><script type="math/tex" id="MathJax-Element-1">\mathcal{F}: \mathbb{R}^{n \times m} \rightarrow Y, \ Y
+\in \{0, 1, ..., k-1\}</script> and some input <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mtext mathvariant=&quot;bold&quot;&gt;x&lt;/mtext&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-35" style="width: 0.652em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.59em, 2.42em, -999.997em); top: -2.238em; left: 0em;"><span class="mrow" id="MathJax-Span-36"><span class="texatom" id="MathJax-Span-37"><span class="mrow" id="MathJax-Span-38"><span class="mtext" id="MathJax-Span-39" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span></span><span style="display: inline-block; width: 0px; height: 2.244em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mtext mathvariant="bold">x</mtext></mrow></math></span></span><script type="math/tex" id="MathJax-Element-2">\textbf{x}</script>, and adversarial is created by
+the modification <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-40" style="width: 0.475em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.416em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.42em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-41"><span class="mi" id="MathJax-Span-42" style="font-family: MathJax_Math; font-style: italic;">ϵ</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϵ</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">\epsilon</script> within the range of <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-43" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-44"><span class="mi" id="MathJax-Span-45" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">r</script> (i.e. <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-46" style="width: 2.42em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.244em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.359em, 1002.24em, 2.479em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-47"><span class="mi" id="MathJax-Span-48" style="font-family: MathJax_Math; font-style: italic;">ϵ</span><span class="mo" id="MathJax-Span-49" style="font-family: MathJax_Main; padding-left: 0.298em;">≤</span><span class="mi" id="MathJax-Span-50" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.184em; border-left: 0px solid; width: 0px; height: 0.941em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>ϵ</mi><mo>≤</mo><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">\epsilon \leq r</script>) that
+will result in a miss-classification: <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mtext mathvariant=&quot;bold&quot;&gt;x&lt;/mtext&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2260;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mtext mathvariant=&quot;bold&quot;&gt;x&lt;/mtext&gt;&lt;/mrow&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-51" style="width: 7.963em; display: inline-block;"><span style="display: inline-block; position: relative; width: 7.491em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.3em, 1007.37em, 2.656em, -999.997em); top: -2.238em; left: 0em;"><span class="mrow" id="MathJax-Span-52"><span class="texatom" id="MathJax-Span-53"><span class="mrow" id="MathJax-Span-54"><span class="mi" id="MathJax-Span-55" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-56" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-57"><span class="mrow" id="MathJax-Span-58"><span class="mtext" id="MathJax-Span-59" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-60" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-61" style="font-family: MathJax_Main; padding-left: 0.298em;">≠</span><span class="texatom" id="MathJax-Span-62" style="padding-left: 0.298em;"><span class="mrow" id="MathJax-Span-63"><span class="mi" id="MathJax-Span-64" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-65" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-66"><span class="mrow" id="MathJax-Span-67"><span class="mtext" id="MathJax-Span-68" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-69" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-70" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">ϵ</span><span class="mo" id="MathJax-Span-71" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.244em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mtext mathvariant="bold">x</mtext></mrow><mo stretchy="false">)</mo><mo>≠</mo><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mtext mathvariant="bold">x</mtext></mrow><mo>+</mo><mi>ϵ</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-6">\mathcal{F}(\textbf{x}) \neq
+\mathcal{F}(\textbf{x} + \epsilon)</script>.
+</p>
+
+<aside class="notes">
+<p>
+Here we have a more formal definition of what an adversarial is. If we have some
+classifier F. This classifier takes a vector, or in this case, a matrix input
+representation of a image <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-72" style="width: 0.652em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.53em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-73"><span class="mi" id="MathJax-Span-74" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">x</script>. The output of this function is a single class label
+from <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-75" style="width: 0.593em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.534em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.3em, 1000.53em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-76"><span class="mi" id="MathJax-Span-77" style="font-family: MathJax_Math; font-style: italic;">k</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.878em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>k</mi></math></span></span><script type="math/tex" id="MathJax-Element-8">k</script> classes.
+</p>
+
+<p>
+An adversarial example will then be some modification ε to this x where the
+result will be a different output from the classifier. Typically, this ε value
+will be bounded by some norm value. In this example we have an <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-78" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-79"><span class="mi" id="MathJax-Span-80" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-9">r</script>. I.e. this maximum
+amount of change to pixels will be bounded by this <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-81" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-82"><span class="mi" id="MathJax-Span-83" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-10">r</script>.
+</p>
+
+<p>
+In other words, to create an adversarial, it is necessary to find some, suitably
+small, modification to the original input image, i.e. change of pixels, that will
+result in the model outputing an incorrect class.
+</p>
+
+<p>
+Often, we find that the modifications are not noticable to the human observer, but
+yet, the model has a high degree of confidence in its incorrect prediction.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgeec32a7" style="top: 350px; display: none;">
+<h2 id="orgeec32a7"><span class="section-number-2">8</span> - How do we choose an <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-84" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-85"><span class="mi" id="MathJax-Span-86" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-11">r</script></h2>
+
+<div id="org845af40" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/eos.png" alt="eos.png">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+And by modifying the amount of perturbation one can apply to the input, we have more
+destructive modifications. But as you can see in these examples, each image still
+looks like their respective number, despite any perturbation is applied.
+</p>
+
+<p>
+Two things to note:
+</p>
+<ul>
+<li>the less perturbed cases are included in the bigger r scenario</li>
+<li>the potential amount of adversarials probably increases with r</li>
+
+</ul>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgccfe9a6" style="top: 350px; display: none;">
+<h2 id="orgccfe9a6"><span class="section-number-2">9</span> - Less clear with non-image data</h2>
+<p>
+Iris dataset - classifier aim: predict type of flower from 4 dimensional vector of
+Sepal Length, Sepal Width, Petal Length, and Petal Width.
+I.e. <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo&gt;:&lt;/mo&gt;&lt;msup&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;/mrow&gt;&lt;mn&gt;4&lt;/mn&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x2192;&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;&amp;#xA0;&lt;/mtext&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;{&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;mo fence=&quot;false&quot; stretchy=&quot;false&quot;&gt;}&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-87" style="width: 12.09em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.383em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.123em, 1011.32em, 2.597em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-88"><span class="texatom" id="MathJax-Span-89"><span class="mrow" id="MathJax-Span-90"><span class="mi" id="MathJax-Span-91" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-92" style="font-family: MathJax_Main; padding-left: 0.298em;">:</span><span class="msubsup" id="MathJax-Span-93" style="padding-left: 0.298em;"><span style="display: inline-block; position: relative; width: 1.182em; height: 0px;"><span style="position: absolute; clip: rect(3.128em, 1000.71em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="texatom" id="MathJax-Span-94"><span class="mrow" id="MathJax-Span-95"><span class="mi" id="MathJax-Span-96" style="font-family: MathJax_AMS;">R</span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.419em; left: 0.71em;"><span class="mn" id="MathJax-Span-97" style="font-size: 70.7%; font-family: MathJax_Main;">4</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-98" style="font-family: MathJax_Main; padding-left: 0.298em;">→</span><span class="mi" id="MathJax-Span-99" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.18em;"></span></span><span class="mo" id="MathJax-Span-100" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-101" style="font-family: MathJax_Main; padding-left: 0.18em;">&nbsp;</span><span class="mi" id="MathJax-Span-102" style="font-family: MathJax_Math; font-style: italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.18em;"></span></span><span class="mo" id="MathJax-Span-103" style="font-family: MathJax_Main; padding-left: 0.298em;">∈</span><span class="mo" id="MathJax-Span-104" style="font-family: MathJax_Main; padding-left: 0.298em;">{</span><span class="mn" id="MathJax-Span-105" style="font-family: MathJax_Main;">0</span><span class="mo" id="MathJax-Span-106" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-107" style="font-family: MathJax_Main; padding-left: 0.18em;">1</span><span class="mo" id="MathJax-Span-108" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-109" style="font-family: MathJax_Main; padding-left: 0.18em;">2</span><span class="mo" id="MathJax-Span-110" style="font-family: MathJax_Main;">}</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.316em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo>:</mo><msup><mrow class="MJX-TeXAtom-ORD"><mi mathvariant="double-struck">R</mi></mrow><mn>4</mn></msup><mo stretchy="false">→</mo><mi>Y</mi><mo>,</mo><mtext>&nbsp;</mtext><mi>Y</mi><mo>∈</mo><mo fence="false" stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo fence="false" stretchy="false">}</mo></math></span></span><script type="math/tex" id="MathJax-Element-12">\mathcal{F}: \mathbb{R}^4 \rightarrow Y, \ Y \in \{0, 1, 2\}</script>.
+</p>
+
+
+<div id="org83bbabf" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/iris.png" alt="iris.png" height="400px">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+However, for non-image data, we must ask how much modification can we apply in order
+to search for adversarial examples?
+</p>
+
+<p>
+In this toy example we have the Iris dataset. Called so because we have 3 different
+types of plant species indicated by the different coloured points. In this plot we
+have plotted the Sepal Width against the Sepal Length. A Neural Network will take
+these features such as Sepal Length or Width, and output a classification such as
+Setosa.
+</p>
+
+<p>
+For these two out of four total features, the Setosa class may be almost linearly
+separated, the Versicolor and virginica classes are interdispersed using these two
+Sepal features.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org800b080" style="top: 350px; display: none;">
+<h2 id="org800b080"><span class="section-number-2">10</span> - Applying a 'small' <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-111" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-112"><span class="mi" id="MathJax-Span-113" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-13">r</script> can lead to overlaps of true class boundaries</h2>
+
+<div id="org3e0740a" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/iris-boundaries.png" alt="iris-boundaries.png">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+In this plot we have added a red outline to each point in the training data. This red
+outline represents the maximum amount of perturbation, our <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-114" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-115"><span class="mi" id="MathJax-Span-116" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-14">r</script> bound we talked about
+before.
+</p>
+
+<p>
+Even in this case where <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-117" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-118"><span class="mi" id="MathJax-Span-119" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-15">r</script> is roughly 0.1, many modifications of the each point
+would push across potential class boundaries. This may be certainly true for the
+versicolor and viriginica classes. Yet for the Setosa class, we can be more sure that
+we have not passed any class boundaries.
+</p>
+
+<p>
+So we may once again ask the question: which $r$-bound should we use when search for
+adversarial examples.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org0c1de28" style="top: 350px; display: none;">
+<h2 id="org0c1de28"><span class="section-number-2">11</span> - Generate a individual <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-120" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-121"><span class="mi" id="MathJax-Span-122" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-16">r</script> for each data point</h2>
+
+<div id="org2d7a25e" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/boundary.png" alt="boundary.png">
+</p>
+<p><span class="figure-number">Figure 10: </span>geometric complexity of class boundaries</p>
+</div>
+
+
+<div id="orgf1c6cfd" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/deceptive.png" alt="deceptive.png">
+</p>
+<p><span class="figure-number">Figure 11: </span>sparsity/density of sampling from data manifold that consistutes the training data.</p>
+</div>
+
+<aside class="notes">
+<p>
+Some of my research aims to answer this question, using the information presented in
+the available data. Given a set of data, a individual $r$-bound will be computed for each
+data point that will take into consideration the estimated class bounds, and how much
+information there is present in the data.
+</p>
+
+<p>
+We consider two properties of the data in the process of generating these
+neighbourhoods. These are:
+</p>
+
+<p>
+situations where differently labelled data points lay close together in
+the topological space, and therefore any perturbation of the data points could result
+in passing the class boundaries, while wrongly labelling the perturbation the same as
+the original. We have just seen this with the previous plots of the Iris data.
+</p>
+
+<p>
+Our second property is shown in figure 2. It concerns the number of samples from
+different regions of the data manifold. In sparse regions (small numbers of samples),
+estimated class boundaries mayseem deceivingly simple, e.g. linear with a wide
+margin.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgb1c0b0c" style="top: 350px; display: none;">
+<h2 id="orgb1c0b0c"><span class="section-number-2">12</span> - Iterative expansion</h2>
+
+<div id="org4c153cc" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/expansion.png" alt="expansion.png">
+</p>
+</div>
+
+<p>
+In our method we provide an algorithm to iteratively expand the maximum <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-123" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-124"><span class="mi" id="MathJax-Span-125" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-17">r</script> bound.
+</p>
+
+<aside class="notes">
+<p>
+Our method consists of iteratively expanding the maximum <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-18-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-126" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-127"><span class="mi" id="MathJax-Span-128" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-18">r</script> bounds for each data
+point simulateanously. If the bound intersects with a bound of data point from a
+different class, then these two data points will stop expanding.
+</p>
+
+<p>
+In this example we can see 3 data points, x<sub>1</sub>, x<sub>2</sub>, and x<sub>3</sub>. Where x<sub>1</sub>, and x<sub>3</sub>, are
+from one class, and x<sub>2</sub> is from another. There are iterative steps for the expansion
+of x<sub>1</sub> until it collides with the bound of x<sub>2</sub>. The bound of x<sub>3</sub> is ignored as its
+from the same class.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org0fee890" style="top: 350px; display: none;">
+<h2 id="org0fee890"><span class="section-number-2">13</span> - Modulating by density</h2>
+<p>
+Expansion is modulated by the estimated density of data samples. Using an inverse multiquadric
+radial basis function (RBF) to estimate the density at a given location.
+</p>
+
+<p>
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-19-Frame" tabindex="0" style="text-align: center; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mi&gt;&amp;#x03C6;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;;&lt;/mo&gt;&lt;mover&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo accent=&quot;false&quot;&gt;&amp;#x00AF;&lt;/mo&gt;&lt;/mover&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mfrac&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;msqrt&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;&amp;#x03B5;&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/msqrt&gt;&lt;/mfrac&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mtext&gt;where&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mo&gt;=&amp;#x2225;&lt;/mo&gt;&lt;mover&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo accent=&quot;false&quot;&gt;&amp;#x00AF;&lt;/mo&gt;&lt;/mover&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;&amp;#x2225;&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-129" style="width: 19.637em; display: inline-block;"><span style="display: inline-block; position: relative; width: 18.517em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(0.652em, 1018.4em, 3.541em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-130"><span class="mi" id="MathJax-Span-131" style="font-family: MathJax_Math; font-style: italic;">φ</span><span class="mo" id="MathJax-Span-132" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-133" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-134" style="font-family: MathJax_Main;">;</span><span class="munderover" id="MathJax-Span-135" style="padding-left: 0.18em;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px;"><span style="position: absolute; clip: rect(3.423em, 1000.53em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-136" style="font-family: MathJax_Math; font-style: italic;">x</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.305em, 1000.53em, 3.777em, -999.997em); top: -4.242em; left: 0.003em;"><span class="mo" id="MathJax-Span-137" style=""><span style="display: inline-block; position: relative; width: 0.534em; height: 0px;"><span style="position: absolute; top: -4.006em; left: -0.056em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.006em; left: 0.239em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.006em; left: 0.121em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-138" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-139" style="font-family: MathJax_Main; padding-left: 0.298em;">=</span><span class="mfrac" id="MathJax-Span-140" style="padding-left: 0.298em;"><span style="display: inline-block; position: relative; width: 5.015em; height: 0px; margin-right: 0.121em; margin-left: 0.121em;"><span style="position: absolute; clip: rect(3.187em, 1000.42em, 4.189em, -999.997em); top: -4.655em; left: 50%; margin-left: -0.233em;"><span class="mn" id="MathJax-Span-141" style="font-family: MathJax_Main;">1</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(2.951em, 1004.9em, 4.543em, -999.997em); top: -3.181em; left: 50%; margin-left: -2.415em;"><span class="msqrt" id="MathJax-Span-142"><span style="display: inline-block; position: relative; width: 4.897em; height: 0px;"><span style="position: absolute; clip: rect(3.069em, 1003.89em, 4.425em, -999.997em); top: -4.006em; left: 1.005em;"><span class="mrow" id="MathJax-Span-143"><span class="mn" id="MathJax-Span-144" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-145" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mo" id="MathJax-Span-146" style="font-family: MathJax_Main; padding-left: 0.239em;">(</span><span class="mi" id="MathJax-Span-147" style="font-family: MathJax_Math; font-style: italic;">ε</span><span class="mi" id="MathJax-Span-148" style="font-family: MathJax_Math; font-style: italic;">r</span><span class="msubsup" id="MathJax-Span-149"><span style="display: inline-block; position: relative; width: 0.828em; height: 0px;"><span style="position: absolute; clip: rect(3.069em, 1000.3em, 4.425em, -999.997em); top: -4.006em; left: 0em;"><span class="mo" id="MathJax-Span-150" style="font-family: MathJax_Main;">)</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.301em; left: 0.416em;"><span class="mn" id="MathJax-Span-151" style="font-size: 70.7%; font-family: MathJax_Main;">2</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.541em, 1003.84em, 3.953em, -999.997em); top: -4.596em; left: 1.005em;"><span style="display: inline-block; position: relative; width: 3.835em; height: 0px;"><span style="position: absolute; font-family: MathJax_Main; top: -4.006em; left: -0.056em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; font-family: MathJax_Main; top: -4.006em; left: 3.128em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="font-family: MathJax_Main; position: absolute; top: -4.006em; left: 0.475em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="font-family: MathJax_Main; position: absolute; top: -4.006em; left: 1.005em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="font-family: MathJax_Main; position: absolute; top: -4.006em; left: 1.536em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="font-family: MathJax_Main; position: absolute; top: -4.006em; left: 2.126em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="font-family: MathJax_Main; position: absolute; top: -4.006em; left: 2.656em;">−<span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.01em, 1001em, 4.543em, -999.997em); top: -4.006em; left: 0em;"><span style="font-family: MathJax_Size1;">√</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(0.828em, 1005.01em, 1.241em, -999.997em); top: -1.294em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 5.015em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.064em;"></span></span></span></span><span class="mo" id="MathJax-Span-152" style="font-family: MathJax_Main;">,</span><span class="mspace" id="MathJax-Span-153" style="height: 0em; vertical-align: 0em; width: 0.298em; display: inline-block; overflow: hidden;"></span><span class="mtext" id="MathJax-Span-154" style="font-family: MathJax_Main; padding-left: 0.18em;">where</span><span class="mspace" id="MathJax-Span-155" style="height: 0em; vertical-align: 0em; width: 0.298em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-156" style="font-family: MathJax_Math; font-style: italic;">r</span><span class="mo" id="MathJax-Span-157" style="font-family: MathJax_Main; padding-left: 0.298em;">=<span style="font-family: MathJax_Main; font-style: normal; font-weight: normal;">∥</span></span><span class="munderover" id="MathJax-Span-158" style="padding-left: 0.298em;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px;"><span style="position: absolute; clip: rect(3.423em, 1000.53em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-159" style="font-family: MathJax_Math; font-style: italic;">x</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.305em, 1000.53em, 3.777em, -999.997em); top: -4.242em; left: 0.003em;"><span class="mo" id="MathJax-Span-160" style=""><span style="display: inline-block; position: relative; width: 0.534em; height: 0px;"><span style="position: absolute; top: -4.006em; left: -0.056em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.006em; left: 0.239em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.006em; left: 0.121em;"><span style="font-size: 70.7%; font-family: MathJax_Main;">¯</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-161" style="font-family: MathJax_Main; padding-left: 0.239em;">−</span><span class="mi" id="MathJax-Span-162" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">x</span><span class="mo" id="MathJax-Span-163" style="font-family: MathJax_Main;">∥</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.309em; border-left: 0px solid; width: 0px; height: 2.816em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>φ</mi><mo stretchy="false">(</mo><mi>x</mi><mo>;</mo><mover><mi>x</mi><mo accent="false">¯</mo></mover><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>1</mn><mo>+</mo><mo stretchy="false">(</mo><mi>ε</mi><mi>r</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup></msqrt></mfrac><mo>,</mo><mspace width="thickmathspace"></mspace><mtext>where</mtext><mspace width="thickmathspace"></mspace><mi>r</mi><mo>=∥</mo><mover><mi>x</mi><mo accent="false">¯</mo></mover><mo>−</mo><mi>x</mi><mo stretchy="false">∥</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-19">
+    \varphi(x; \overline{x}) =  \frac{1}{\sqrt{1 + (\varepsilon r)^2}},\; \text{where}\; r = \parallel \overline{x} - x \parallel
+</script>
+</p>
+
+<p>
+The estimated density for a single point is the sum of RBFS, centered on each point,
+at this location.
+</p>
+
+<p>
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-20-Frame" tabindex="0" style="text-align: center; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msub&gt;&lt;mi&gt;&amp;#x03C1;&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;munder&gt;&lt;mo&gt;&amp;#x2211;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2208;&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;X&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/munder&gt;&lt;mi&gt;&amp;#x03C6;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-164" style="width: 9.85em; display: inline-block;"><span style="display: inline-block; position: relative; width: 9.26em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.064em, 1009.14em, 3.777em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-165"><span class="msubsup" id="MathJax-Span-166"><span style="display: inline-block; position: relative; width: 0.887em; height: 0px;"><span style="position: absolute; clip: rect(3.423em, 1000.53em, 4.425em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-167" style="font-family: MathJax_Math; font-style: italic;">ρ</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -3.83em; left: 0.534em;"><span class="mi" id="MathJax-Span-168" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">c</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-169" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-170" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-171" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-172" style="font-family: MathJax_Main; padding-left: 0.298em;">=</span><span class="munderover" id="MathJax-Span-173" style="padding-left: 0.298em;"><span style="display: inline-block; position: relative; width: 2.067em; height: 0px;"><span style="position: absolute; clip: rect(2.892em, 1001.42em, 4.661em, -999.997em); top: -4.006em; left: 0.298em;"><span class="mo" id="MathJax-Span-174" style="font-family: MathJax_Size2; vertical-align: 0em;">∑</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.305em, 1002.07em, 4.484em, -999.997em); top: -2.886em; left: 0em;"><span class="texatom" id="MathJax-Span-175"><span class="mrow" id="MathJax-Span-176"><span class="msubsup" id="MathJax-Span-177"><span style="display: inline-block; position: relative; width: 0.652em; height: 0px;"><span style="position: absolute; clip: rect(3.541em, 1000.36em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-178" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">x</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -3.889em; left: 0.416em;"><span class="mi" id="MathJax-Span-179" style="font-size: 50%; font-family: MathJax_Math; font-style: italic;">j</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-180" style="font-size: 70.7%; font-family: MathJax_Main;">∈</span><span class="msubsup" id="MathJax-Span-181"><span style="display: inline-block; position: relative; width: 0.946em; height: 0px;"><span style="position: absolute; clip: rect(3.364em, 1000.59em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-182" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">X<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -4.301em; left: 0.652em;"><span class="mi" id="MathJax-Span-183" style="font-size: 50%; font-family: MathJax_Math; font-style: italic;">c</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mi" id="MathJax-Span-184" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.18em;">φ</span><span class="mo" id="MathJax-Span-185" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-186" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-187" style="font-family: MathJax_Main;">;</span><span class="msubsup" id="MathJax-Span-188" style="padding-left: 0.18em;"><span style="display: inline-block; position: relative; width: 0.946em; height: 0px;"><span style="position: absolute; clip: rect(3.423em, 1000.53em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mi" id="MathJax-Span-189" style="font-family: MathJax_Math; font-style: italic;">x</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; top: -3.83em; left: 0.593em;"><span class="mi" id="MathJax-Span-190" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">j</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-191" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.559em; border-left: 0px solid; width: 0px; height: 2.628em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>ρ</mi><mi>c</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mrow class="MJX-TeXAtom-ORD"><msub><mi>x</mi><mi>j</mi></msub><mo>∈</mo><msup><mi>X</mi><mi>c</mi></msup></mrow></munder><mi>φ</mi><mo stretchy="false">(</mo><mi>x</mi><mo>;</mo><msub><mi>x</mi><mi>j</mi></msub><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-20">
+    \rho_c(x) = \sum_{x_j \in X^c} \varphi(x; x_j)
+</script>
+</p>
+
+<aside class="notes">
+<p>
+As we noted before, we may not have a lot of information in which to estimate the
+class boundaries. This lack of information occurs due to the lack of sampling of
+data. Therefore, we use this information of density of sampling to account for the
+lack of information of class boundaries.
+</p>
+
+<p>
+This density modulates the expansion of the $r$-bound. If there is not lots of
+information about class boundaries, then the $r$-bound expansion will be a lot
+smaller.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orga116242" style="top: 350px; display: none;">
+<h2 id="orga116242"><span class="section-number-2">14</span> - Final result: individual <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-21-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-192" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-193"><span class="mi" id="MathJax-Span-194" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-21">r</script> value for each data point</h2>
+
+<div id="orga4a99f0" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/iris-2.png" alt="iris-2.png">
+</p>
+</div>
+
+<p>
+Morgan, J., Paiement, A., Pauly, A., &amp; Seisenberger, M. (2021). Adaptive
+neighbourhoods for the discovery of adversarial examples. arXiv preprint
+arXiv:2101.09108.
+</p>
+
+<aside class="notes">
+<p>
+After computing the density of each data point and expanding the neighbourhoods, then
+we will have an individual $r$-bound for each data point. This <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-22-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-195" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-196"><span class="mi" id="MathJax-Span-197" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-22">r</script> provides the
+upper-bound with which to search for adversarial examples.
+</p>
+
+<p>
+We can seen this plot, that the black points have grown much larger due to the large
+amounts of information about neighbours of the same class. While other points in the
+top right have not grown much at all. In this plot we can still see overlaps, but
+this is only because the neighbourhoods were computed at a higher number of
+dimensions while this plot only shows 2 dimensions. At these higher dimensions the
+neighbourhoods are not overlapping.
+</p>
+
+<p>
+Here today, I have provided the iterative method to compute $r$-bounds, but we also
+provide another method using langrangian multipliers to directly compute these
+bounds. You can find the method in the paper "Adaptive neighbourhoods for the
+discovery of adversarial examples".
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org069f700" style="top: 350px; display: none;">
+<h2 id="org069f700"><span class="section-number-2">15</span> - Now we must find <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-23-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mtext mathvariant=&quot;bold&quot;&gt;x&lt;/mtext&gt;&lt;/mrow&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-198" style="width: 2.42em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.244em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.477em, 1002.24em, 2.479em, -999.997em); top: -2.238em; left: 0em;"><span class="mrow" id="MathJax-Span-199"><span class="texatom" id="MathJax-Span-200"><span class="mrow" id="MathJax-Span-201"><span class="mtext" id="MathJax-Span-202" style="font-family: MathJax_Main; font-weight: bold;">x</span></span></span><span class="mo" id="MathJax-Span-203" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-204" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">ϵ</span></span><span style="display: inline-block; width: 0px; height: 2.244em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left: 0px solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow class="MJX-TeXAtom-ORD"><mtext mathvariant="bold">x</mtext></mrow><mo>+</mo><mi>ϵ</mi></math></span></span><script type="math/tex" id="MathJax-Element-23">\textbf{x} + \epsilon</script></h2>
+
+<div id="orgb72d88e" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/perturbation.png" alt="perturbation.png" height="300px">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+From the result of this iterative algorithm, we have an upper bound <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-24-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-205" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-206"><span class="mi" id="MathJax-Span-207" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-24">r</script> value for
+each data point. However, we have not yet found an adversarial example. To find such
+an example, we must find some <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-25-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-208" style="width: 2.42em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.244em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.418em, 1002.24em, 2.42em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-209"><span class="mi" id="MathJax-Span-210" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-211" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-212" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">ϵ</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.122em; border-left: 0px solid; width: 0px; height: 0.816em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi><mo>+</mo><mi>ϵ</mi></math></span></span><script type="math/tex" id="MathJax-Element-25">x + \epsilon</script> where the model outputs a
+miss-classification.
+</p>
+
+<p>
+To find these examples, we can use our open-source platform.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgc42231c" style="top: 350px; display: none;">
+<h2 id="orgc42231c"><span class="section-number-2">16</span> - Searching for the existence of adversarial examples</h2>
+
+<div id="org2cddc14" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/neuralverifier.png" alt="neuralverifier.png">
+</p>
+</div>
+
+<p>
+<a href="https://github.com/jaypmorgan/NeuralVerifier.jl">https://github.com/jaypmorgan/NeuralVerifier.jl</a> - built on top of Z3 solver to
+provide an interface to verify Neural Network properties, such as: output bounds
+checking and adversarial robustness.
+</p>
+
+<aside class="notes">
+<p>
+Our open-source platform is called NeuralVerifier. It allows use to verify certain
+properties of Neural Networks using Satisfiability Modulo Theories or SMT. We build
+ontop of an existing and highly used SMT solver called Z3, which allows us to provide
+more complex formulas to solve.
+</p>
+
+<p>
+This next part of the talk will describe how we can create Neural Networks inside an
+SMT solver, and then how NeuralVerifier abstracts away the work to make searching for
+adversarial examples easier.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgff7ebb8" style="top: 350px; display: none;">
+<h2 id="orgff7ebb8"><span class="section-number-2">17</span> - Application of using NeuralVerifier</h2>
+
+<div id="org230221f" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/NN.png" alt="NN.png" height="400px">
+</p>
+</div>
+
+<p>
+Take a very simple example of a 3-layer neural network.
+</p>
+
+<aside class="notes">
+<p>
+To motivate the explanation, take this very simple example of a 3 layer neural
+network, with a single hidden layer in the middle.
+</p>
+
+<p>
+This network takes in 3 inputs and produces three class outputs.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org5d11328" style="top: 350px; display: none;">
+<h2 id="org5d11328"><span class="section-number-2">18</span> - Simple Arithmetic</h2>
+<p>
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-26-Frame" tabindex="0" style="text-align: center; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mi&gt;z&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;&amp;#x03C3;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;W&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-213" style="width: 6.902em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.489em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.241em, 1006.37em, 2.597em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-214"><span class="mi" id="MathJax-Span-215" style="font-family: MathJax_Math; font-style: italic;">z<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-216" style="font-family: MathJax_Main; padding-left: 0.298em;">=</span><span class="mi" id="MathJax-Span-217" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">σ<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-218" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-219" style="font-family: MathJax_Math; font-style: italic;">W<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span><span class="mi" id="MathJax-Span-220" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-221" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-222" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">b</span><span class="mo" id="MathJax-Span-223" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>z</mi><mo>=</mo><mi>σ</mi><mo stretchy="false">(</mo><mi>W</mi><mi>x</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-26">
+z = \sigma(Wx + b)
+</script>
+</p>
+
+
+<div id="orgfd0541e" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/neuron.png" alt="neuron.png" height="200px">
+</p>
+</div>
+
+<p>
+Where <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-27-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;&amp;#x03C3;&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-224" style="width: 0.652em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.59em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-225"><span class="mi" id="MathJax-Span-226" style="font-family: MathJax_Math; font-style: italic;">σ<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.566em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>σ</mi></math></span></span><script type="math/tex" id="MathJax-Element-27">\sigma</script> is some non-linear function to increase the model's complexity to
+allow it to model non-linear relationships. One of the most common non-linear
+functions when training neural networks is the Rectified Linear activation function
+(ReLU): <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-28-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mo movablelimits=&quot;true&quot; form=&quot;prefix&quot;&gt;max&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;W&lt;/mi&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-227" style="width: 7.314em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.902em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.241em, 1006.78em, 2.597em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-228"><span class="mo" id="MathJax-Span-229" style="font-family: MathJax_Main;">max</span><span class="mo" id="MathJax-Span-230" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-231" style="font-family: MathJax_Math; font-style: italic;">W<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span><span class="mi" id="MathJax-Span-232" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-233" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-234" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">b</span><span class="mo" id="MathJax-Span-235" style="font-family: MathJax_Main;">,</span><span class="mn" id="MathJax-Span-236" style="font-family: MathJax_Main; padding-left: 0.18em;">0</span><span class="mo" id="MathJax-Span-237" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.309em; border-left: 0px solid; width: 0px; height: 1.191em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo movablelimits="true" form="prefix">max</mo><mo stretchy="false">(</mo><mi>W</mi><mi>x</mi><mo>+</mo><mi>b</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-28">\max(Wx+ b, 0)</script>.
+</p>
+
+<aside class="notes">
+<p>
+At a microlevel, the neural network performs a very simple equation, a Weight matrix
+multiplied against the input vector, and the addition of the bias. A function is then
+applied to the the result of this expression. This activation function in a
+non-linearity which increases the learning capability of the network.
+</p>
+
+<p>
+A very frequently used non-linear activation function is the ReLU activation function
+which simply computes the maximum between the input and 0.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org6c7101c" style="top: 350px; display: none;">
+<h2 id="org6c7101c"><span class="section-number-2">19</span> - Encoding arithmetic</h2>
+<p>
+Z3 provides support for real linear arithmetic and provides operations for the basic
+multiplication and addition. Thus, we need only to apply these elementwise.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim=""><span style="color: #5317ac;">function</span> <span style="color: #721045;">dense</span>(x, W, b)
+    out = fill!(Array(<span style="color: #0000bb;">undef</span>, size(W,1), size(x,2)), 0)
+
+    <span style="color: #5317ac;">for</span> i <span style="color: #5317ac;">=</span> 1:size(out,1), j = 1:size(W,2)
+        out[i] += W[i,j] * x[j]
+    <span style="color: #5317ac;">end</span>
+
+    out = out .+ b
+    <span style="color: #5317ac;">return</span> out
+<span style="color: #5317ac;">end</span>
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+As NeuralVerifier is built ontop of Z3, we can simply apply the arithmetic of this
+neuron using constants in the network. So each layer of the neural network is just
+the combination of the predefined weight matrix, the input and the bias.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org164874e" style="top: 350px; display: none;">
+<h2 id="org164874e"><span class="section-number-2">20</span> - ReLU</h2>
+<p>
+Moving onto non-linear functions, we must consider how such non-linearities are
+encoded in the model. For some of the activation functions, it could be as easy as
+simple boolean logic.
+</p>
+
+<p>
+<code>If(x &gt; 0, x, 0)</code>
+</p>
+
+
+<div id="orge4136fe" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/relu.jpg" alt="relu.jpg" height="300px">
+</p>
+</div>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org8cef60a" style="top: 350px; display: none;">
+<h2 id="org8cef60a"><span class="section-number-2">21</span> - More complex Sigmoid function (using piecewise linear approximation)</h2>
+<aside class="notes">
+<p>
+However, encoding more complex activation functions can be reduced via piecewise
+linear approximation with the same boolean arithmetic. Increasing the precision of
+approximation will make satisfiability slower, but the encoding will be more true
+with the original network.
+</p>
+
+</aside>
+
+
+<div id="org680bcd3" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/sigmoid.jpg" alt="sigmoid.jpg" height="300px">
+</p>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim=""><span style="color: #5317ac;">function</span> <span style="color: #721045;">sigmoid</span>(x)
+    If(x &lt; 0,
+        If(x &lt; -2, 0.0, 0.4),
+        If(x &gt;  2, 1.0, 0.6))
+<span style="color: #5317ac;">end</span>
+</code></pre>
+</div>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org7574afc" style="top: 350px; display: none;">
+<h2 id="org7574afc"><span class="section-number-2">22</span> - Putting together a simple layer</h2>
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim=""><span style="color: #5317ac;">function</span> <span style="color: #721045;">dense</span>(x, W, b)
+    out = fill!(Array(<span style="color: #0000bb;">undef</span>, size(W,1), size(x,2)), 0)
+
+    <span style="color: #5317ac;">for</span> i <span style="color: #5317ac;">=</span> 1:size(out,1), j = 1:size(W,2)
+        out[i] += W[i,j] * x[j]
+    <span style="color: #5317ac;">end</span>
+
+    out = out .+ b
+    <span style="color: #5317ac;">return</span> out
+<span style="color: #5317ac;">end</span>
+
+<span style="color: #5317ac;">function</span> <span style="color: #721045;">relu</span>(x)
+    If(x &gt; 0, x, 0)
+<span style="color: #5317ac;">end</span>
+
+y = relu(dense(x, W, b))
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+We can now compose these functions together in order to produce the result of a
+single layer of the neural network.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgef437ea" style="top: 350px; display: none;">
+<h2 id="orgef437ea"><span class="section-number-2">23</span> - Building an entire model with NeuralVerifier</h2>
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim=""><span style="color: #721045;">encoding</span>(x) = <span style="color: #5317ac;">begin</span>
+    y = dense(x,
+              neural_network[1].W,
+              neural_network[1].b) |&gt; relu;
+    y = dense(y,
+              neural_network[2].W,
+              neural_network[2].b) |&gt; relu;
+    y = dense(y,
+              neural_network[3].W,
+              neural_network[3].b) |&gt; softmax;
+<span style="color: #5317ac;">end</span>
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+In NeuralVerifier, this is all done for you. All you need to do is create a function
+that takes some input <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-29-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-238" style="width: 0.652em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.593em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.53em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-239"><span class="mi" id="MathJax-Span-240" style="font-family: MathJax_Math; font-style: italic;">x</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math></span></span><script type="math/tex" id="MathJax-Element-29">x</script>, and apply the dense and non-linearity functions mimicing
+the architectural design of your original network.
+</p>
+
+<p>
+You can see we have passed the pretrained or prelearned weights and biases for each
+layer of the network.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgf268b0d" style="top: 350px; display: none;">
+<h2 id="orgf268b0d"><span class="section-number-2">24</span> - Setting up search for adversarial examples</h2>
+<p>
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-30-Frame" tabindex="0" style="text-align: center; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;munder&gt;&lt;mo movablelimits=&quot;true&quot; form=&quot;prefix&quot;&gt;min&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;/mrow&gt;&lt;/munder&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;&amp;#x2260;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi class=&quot;MJX-tex-caligraphic&quot; mathvariant=&quot;script&quot;&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;&amp;#xA0;&lt;/mtext&gt;&lt;mi&gt;&amp;#x03F5;&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-241" style="width: 13.564em; display: inline-block;"><span style="display: inline-block; position: relative; width: 12.798em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.241em, 1012.8em, 3.069em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-242"><span class="munderover" id="MathJax-Span-243"><span style="display: inline-block; position: relative; width: 1.654em; height: 0px;"><span style="position: absolute; clip: rect(3.187em, 1001.65em, 4.189em, -999.997em); top: -4.006em; left: 0em;"><span class="mo" id="MathJax-Span-244" style="font-family: MathJax_Main;">min</span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span><span style="position: absolute; clip: rect(3.541em, 1000.3em, 4.307em, -999.997em); top: -3.417em; left: 0.71em;"><span class="texatom" id="MathJax-Span-245"><span class="mrow" id="MathJax-Span-246"><span class="mi" id="MathJax-Span-247" style="font-size: 70.7%; font-family: MathJax_Math; font-style: italic;">ϵ</span></span></span><span style="display: inline-block; width: 0px; height: 4.012em;"></span></span></span></span><span class="mo" id="MathJax-Span-248" style="font-family: MathJax_Main;">(</span><span class="texatom" id="MathJax-Span-249"><span class="mrow" id="MathJax-Span-250"><span class="mi" id="MathJax-Span-251" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-252" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-253" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-254" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-255" style="font-family: MathJax_Main; padding-left: 0.298em;">≠</span><span class="texatom" id="MathJax-Span-256" style="padding-left: 0.298em;"><span class="mrow" id="MathJax-Span-257"><span class="mi" id="MathJax-Span-258" style="font-family: MathJax_Caligraphic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.121em;"></span></span></span></span><span class="mo" id="MathJax-Span-259" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-260" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-261" style="font-family: MathJax_Main; padding-left: 0.239em;">+</span><span class="mi" id="MathJax-Span-262" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.239em;">ϵ</span><span class="mo" id="MathJax-Span-263" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-264" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-265" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-266" style="font-family: MathJax_Main; padding-left: 0.18em;">&nbsp;</span><span class="mi" id="MathJax-Span-267" style="font-family: MathJax_Math; font-style: italic;">ϵ</span><span class="mo" id="MathJax-Span-268" style="font-family: MathJax_Main; padding-left: 0.298em;">≤</span><span class="mi" id="MathJax-Span-269" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.809em; border-left: 0px solid; width: 0px; height: 1.691em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><munder><mo movablelimits="true" form="prefix">min</mo><mrow class="MJX-TeXAtom-ORD"><mi>ϵ</mi></mrow></munder><mo stretchy="false">(</mo><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≠</mo><mrow class="MJX-TeXAtom-ORD"><mi class="MJX-tex-caligraphic" mathvariant="script">F</mi></mrow><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>ϵ</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>,</mo><mtext>&nbsp;</mtext><mi>ϵ</mi><mo>≤</mo><mi>r</mi></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-30">
+\min_{\epsilon} (\mathcal{F}(x) \neq \mathcal{F}(x + \epsilon)), \ \epsilon \leq r
+</script>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim=""><span style="color: #5317ac;">for</span> (idx, (x_i, r_i)) <span style="color: #5317ac;">in</span> enumerate(zip(x, r))
+    m = Optimize()  <span style="color: #505050;"># </span><span style="color: #505050;">create an optimisation procedure (model)</span>
+
+    add!(m, (eps &gt; 0) ∧ (eps &lt;= r_i)) <span style="color: #505050;"># </span><span style="color: #505050;">bound condition on epsilon</span>
+
+    y = encoding(x_i)  <span style="color: #505050;"># </span><span style="color: #505050;">get initial condition of y in our encoding</span>
+
+    add!(m, y != f(xi)) <span style="color: #505050;"># </span><span style="color: #505050;">add the adversarial example condition</span>
+
+    minimize!(m, eps)  <span style="color: #505050;"># </span><span style="color: #505050;">find the smallest eps</span>
+
+    check(m) <span style="color: #505050;"># </span><span style="color: #505050;">check for satisfiability</span>
+
+    m.is_sat == <span style="color: #223fbf;">"sat"</span> &amp;&amp; <span style="color: #721045;">@info</span> <span style="color: #223fbf;">"#$(idx): Adversarial found!"</span>
+<span style="color: #5317ac;">end</span>
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+To finalise we must add some conditions to specify we wish to search for adversarial
+examples. In this case we setup an Optimisation model in Z3, we add the bounds
+condition on epsilon being above 0, and less than or equal to r. We get the initial y
+given our encoding function that we made earlier. Finally we add our adversarial
+condition that the application of our classifier should not be equal to y.
+</p>
+
+<p>
+We wish to finish epsilon here to find the closest possible adversarial example to
+our original input.
+</p>
+
+<p>
+Finally, we begin the search by using check, and print out if we have found an
+adversarial example.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org7badb60" style="top: 350px; display: none;">
+<h2 id="org7badb60"><span class="section-number-2">25</span> - In NeuralVerifier</h2>
+<div class="org-src-container">
+
+<pre class="src src-julia"><code trim="">r = epsilon_expand(x_train', y_train;
+    ϵ = 1e-7,                    <span style="color: #505050;"># </span><span style="color: #505050;">the initial step size</span>
+    ε = 1.0,                     <span style="color: #505050;"># </span><span style="color: #505050;">RBF width parameter</span>
+    func = inverse_multiquadric, <span style="color: #505050;"># </span><span style="color: #505050;">RBF function to use</span>
+    decay = exponential_decay)   <span style="color: #505050;"># </span><span style="color: #505050;">Decay function based on density</span>
+
+stable_area, adv_examples = stable_region(Optimize, f, x_train', r;
+                                          timeout = 100,
+                                          build_fn = encoding)
+</code></pre>
+</div>
+
+<aside class="notes">
+<p>
+In NeuralVerifier, we have abstracted all these details away and use higher order
+functions. We have a function called epsilon<sub>expand</sub> which takes some density metric
+and computes our upper-bounds for each data point in the data.
+</p>
+
+<p>
+Then we use the stable region function, passing in our model, our data, and our
+computed upper-bounds. The return of this function are the adversarial examples that
+are found, and stable area. The stable area is a distance metric of how close to the
+original inputs the model is robust against adversarial attacks. This kind of metric
+might be useful for checking against specifications of using Neural Networks in
+safety-critical systems.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgca9c56c" style="top: 350px; display: none;">
+<h2 id="orgca9c56c"><span class="section-number-2">26</span> - Adversarial Examples Found!</h2>
+<p>
+Running on MNIST dataset.
+</p>
+
+<pre class="example" id="org2bf954c">[ Info: #1: Adversarial found!
+[ Info: #3: Adversarial found!
+[ Info: #4: Adversarial found!
+[ Info: #5: Adversarial found!
+[ Info: #7: Adversarial found!
+...
+</pre>
+
+
+<div id="org49af450" class="figure">
+<p><img src="./Trustable Machine Learning Systems_files/example.png" alt="example.png">
+</p>
+</div>
+
+<aside class="notes">
+<p>
+When we apply these functions to the MNIST dataset: a dataset of images of numbers,
+where each image is classified by the number present in the image. You can see when
+we run the stable<sub>area</sub> function it finds adversarial examples, and we can see just
+one of these examples where a number 5 is recognised as a 3 by the Neural Network
+when pixel modifications are applied.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-orgbeee420" style="top: 350px; display: none;">
+<h2 id="orgbeee420"><span class="section-number-2">27</span> - Main contributions</h2>
+<ol>
+<li>Using knowledge gleamed from the data manifold to generate individual <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-31-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-270" style="width: 0.534em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.475em; height: 0px; font-size: 106%;"><span style="position: absolute; clip: rect(1.595em, 1000.48em, 2.361em, -999.997em); top: -2.179em; left: 0em;"><span class="mrow" id="MathJax-Span-271"><span class="mi" id="MathJax-Span-272" style="font-family: MathJax_Math; font-style: italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.185em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.059em; border-left: 0px solid; width: 0px; height: 0.628em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-31">r</script> value
+for each data point.</li>
+<li>Open-source platform for verification of Neural Network properties using SMT solvers</li>
+
+</ol>
+
+<aside class="notes">
+<p>
+To summarise this talk, I have presented two main contributions: the first, more
+novel from a research perspective is the computation of upper-bounds for searching
+for adversarial examples. This is not only useful for our NeuralVerifier framework,
+but it also enables the use of existing adversarial generation techniques for
+non-image data.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org3092c08" style="top: 350px; display: none;">
+<h2 id="org3092c08"><span class="section-number-2">28</span> - A thank you to my supervisors</h2>
+<ul>
+<li>Monika Seisenberger (Swansea University)</li>
+<li>Jane Williams (Swansea University)</li>
+<li>Adeline Paiement (Université de Toulon)</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Before I end my talk, its worth noting that this work is helped by supervisors and
+funded by Swansea University.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section style="top: 350px; display: none;" hidden="" aria-hidden="true" class="stack future">
+<section id="slide-org623eae0" style="top: 350px; display: none;">
+<h2 id="org623eae0"><span class="section-number-2">29</span> - Contributions welcome!</h2>
+<p>
+You can find these slides on my personal website below. Additionally follow the github link for
+more documentation and usage on NeuralVerifier.jl
+</p>
+
+<ul>
+<li><a href="https://blog.morganwastaken.com/">https://blog.morganwastaken.com</a></li>
+<li><a href="https://github.com/jaypmorgan/NeuralVerifier.jl">https://github.com/jaypmorgan/NeuralVerifier.jl</a></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+The slides of this talk are available on my personal website linked here. And you can
+also find the link to the NeuralVerifier platform where you can learn about, use, and
+contribute to the development of the platform.
+</p>
+
+<p>
+That's it for me, thank you for your time today.
+</p>
+
+</aside>
+</section>
+</section>
+</div>
+<div class="backgrounds"><div class="slide-background present" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div><div class="slide-background stack future" data-loaded="true" style="display: block;"><div class="slide-background-content"></div><div class="slide-background present" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" data-loaded="true" style="display: block;"><div class="slide-background-content"></div><div class="slide-background present" data-loaded="true" style="display: block;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background-content"></div><div class="slide-background present" style="display: none;"><div class="slide-background-content"></div></div></div></div><div class="slide-number" style="display: none;"></div><aside class="controls" data-controls-layout="bottom-right" data-controls-back-arrows="faded" style="display: block;"><button class="navigate-left" aria-label="previous slide" disabled="disabled"><div class="controls-arrow"></div></button>
+			<button class="navigate-right enabled highlight" aria-label="next slide"><div class="controls-arrow"></div></button>
+			<button class="navigate-up" aria-label="above slide" disabled="disabled"><div class="controls-arrow"></div></button>
+			<button class="navigate-down" aria-label="below slide" disabled="disabled"><div class="controls-arrow"></div></button></aside><div class="progress" style="display: block;"><span style="transform: scaleX(0);"></span></div><div class="speaker-notes" data-prevent-swipe="" tabindex="0"></div><div class="pause-overlay"><button class="resume-button">Resume presentation</button></div><div class="aria-status" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">Trustable Machine Learning Systems Jay Morgan 30th March 2021 </div></div>
+<script src="./Trustable Machine Learning Systems_files/reveal.js"></script>
+<script src="./Trustable Machine Learning Systems_files/markdown.js"></script>
+<script src="./Trustable Machine Learning Systems_files/zoom.js"></script>
+<script src="./Trustable Machine Learning Systems_files/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown,RevealZoom,RevealNotes],
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+]
+});
+
+
+</script>
+
+
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; min-width: 0px; max-width: none; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_AMS, sans-serif;"></div></div></body></html>
