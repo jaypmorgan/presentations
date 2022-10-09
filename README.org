@@ -1,5 +1,10 @@
 * Presentations
 
-- [[file:2021-03-30-Trustable Machine Learning Systems/]]
+A collection of presentations given throughout years.
+
+** 2021
+- [[file:2021-03-30-Trustable Machine Learning Systems/README.md]]
 - [[file:2021-08-05-Learning how to learn with Deep Learning/]]
+
+** 2022
 - [[file:2022-10-13-Adaptive Neighbourhoods/]]
