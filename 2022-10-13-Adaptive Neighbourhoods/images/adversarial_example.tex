@@ -4,6 +4,10 @@
 \definecolor{fillColor}{RGB}{255,255,255}
 \path[use as bounding box,fill=fillColor,fill opacity=0.00] (0,0) rectangle (433.62,542.02);
 \begin{scope}
+  \definecolor{drawColor}{RGB}{0,0,0}
+  \node[text=drawColor,anchor=base west,inner sep=0pt, outer sep=0pt, scale=  1.30] at (-40, 469.80) {Original};
+\end{scope}
+\begin{scope}
 \path[clip] ( 15.84,406.52) rectangle (128.70,542.02);
 \node[inner sep=0pt,outer sep=0pt,anchor=south west,rotate=  0.00] at ( 24.71, 406.52) {
 	\pgfimage[width= 95.12pt,height=135.51pt,interpolate=true]{images/adversarial_example_ras1}};
@@ -54,6 +58,10 @@
 \definecolor{drawColor}{RGB}{255,0,0}
 
 \path[draw=drawColor,line width= 0.4pt,line join=round,line cap=round] ( 32.68,406.52) rectangle ( 47.56,318.84);
+\end{scope}
+\begin{scope}
+  \definecolor{drawColor}{RGB}{0,0,0}
+  \node[text=drawColor,anchor=base west,inner sep=0pt, outer sep=0pt, scale=  1.30] at (-40,334.29) {PGD};
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (433.62,542.02);
@@ -293,6 +301,10 @@
 \path[draw=drawColor,line width= 0.4pt,line join=round,line cap=round] ( 32.68,271.01) rectangle ( 47.56,183.33);
 \end{scope}
 \begin{scope}
+  \definecolor{drawColor}{RGB}{0,0,0}
+  \node[text=drawColor,anchor=base west,inner sep=0pt, outer sep=0pt, scale=  1.30] at (-40,198.78) {FGSM};
+\end{scope}
+\begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (433.62,542.02);
 \definecolor{drawColor}{RGB}{0,0,0}
 
@@ -356,6 +368,10 @@
 \definecolor{drawColor}{RGB}{255,0,0}
 
 \path[draw=drawColor,line width= 0.4pt,line join=round,line cap=round] ( 32.68,135.51) rectangle ( 47.56, 47.83);
+\end{scope}
+\begin{scope}
+  \definecolor{drawColor}{RGB}{0,0,0}
+  \node[text=drawColor,anchor=base west,inner sep=0pt, outer sep=0pt, scale=  1.30] at (-40,63.28) {DAG};
 \end{scope}
 \begin{scope}
 \path[clip] (  0.00,  0.00) rectangle (433.62,542.02);

@@ -9,7 +9,7 @@
 #+latex_header: \usefonttheme{serif}
 #+latex_class: beamer
 #+latex_class_options: [smaller]
-#+bibliography: references.bib
+#+BIBLIOGRAPHY: ./references.bib
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
 * Introduction
@@ -52,13 +52,18 @@ Swansea University
 
 ** Deep Neural Networks
 
-What is a deep neural network
+[[file:images/Object-detection-in-a-dense-scene.jpg]]
+[cite:@unknown]
 
 ** Adversarial Examples
 
-What is an adversarial example
+[[file:images/fgsm_panda_image.png]]
+[cite:@goodfellow2014explaining]
 
 ** Motivating Principles
+
+[[file:images/signs.png]]
+[cite:@huang2017safety]
 
 * Adaptive Neighbourhoods
 
@@ -71,22 +76,38 @@ What is an adversarial example
    - Solar Burst Detection
 4. Some conclusions
 
-** Existing Methods for Creating Adversarial Examples
-
 ** Fast Gradient Sign Method (FGSM)
+
+[[file:images/fgsm_panda_image.png]]
+[cite:@goodfellow2014explaining]
 
 ** Projected Gradient Descent (PGD)
 
+[cite:@madry2017towards]
+
 ** Carlini & Wagner (C&W)
+
+[cite:@carlini2017towards]
 
 ** What do we learn from these methods?
 
-** Figure
+#+ATTR_LATEX: :width 0.5\textwidth
+[[file:images/perturbation.png]]
 
+** Amount of change is important
+
+[[file:images/eos.png]]
+
+** Non-image representations
+
+#+ATTR_LATEX: :width 0.7\textwidth
+[[file:images/iris.png]]
+
+** Perturbations shouldn't pass class boundaries
 
 \begin{figure}
     \centering
-    \begin{tikzpicture}[scale=0.7]
+    \begin{tikzpicture}[scale=1.3]
         \draw [very thick,dotted] (-2,1.2) .. controls (0.8, 0.8) and (0.8,0) .. (2,-1.5);
         \filldraw [gray] (-0.2,-0.2) circle (3pt);
         \draw [->] (-0.5,-0.5) -- (0.6,0.6);
@@ -95,18 +116,28 @@ What is an adversarial example
         
         \node at (-0.05,-0.55) {$x_i$};
         \node at (-1.7, -0.2) {$\varepsilon$};
-        \node[align=center] at (2.8, -0.5) {Class decision \\ boundary};
+        \node[align=center] at (2.8, -0.5) {True class \\ boundary};
     \end{tikzpicture}
-    \caption{Example where a data point $x_i$ lies close to the class decision boundary. In these situations, too large $\varepsilon$ values, may push the synthetically generated point over true class boundaries.}
     \label{fig:complexity}
 \end{figure}
 
-** Figure 2
+\begin{center}
+\vspace{2em}
+Example where a data point $x_i$ lies close to the class decision boundary. In these
+situations, too large $\varepsilon$ values, may push the synthetically generated
+point over true class boundaries.
+\end{center}
 
+** Estimated boundaries can be deceiving
+
+*** Figure 2                                                          :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
 
 \begin{figure}
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.3]
 	% nodes
 	\draw (-1,0) circle (3pt);
 	\filldraw [gray] (1,0) circle (3pt);
@@ -116,17 +147,21 @@ What is an adversarial example
 	\draw [dotted] (-0.9,1) -- (-0.9,-1);
 	\draw [dotted] ( 0.9,1) -- ( 0.9,-1);
     \end{tikzpicture}
-    \caption{Sparse regions of the manifold may appear simple due to the lack of information.}
     \label{fig:density_a}
 \end{figure}
 
+\begin{center}
+\vspace{2em}Sparse regions of the manifold may appear simple due to the lack of information.
+\end{center}
 
-** Figure 3
-
+*** Figure 3                                                          :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
 
 \begin{figure}
     \centering
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.3]
 	% nodes
 	\draw (-1,0) circle (3pt);
 	\draw (0.5,0.9) circle (3pt);
@@ -138,17 +173,13 @@ What is an adversarial example
 	\draw [dotted] (1.1, 1) .. controls (0.7,0) .. (1.1,-1);
 	\draw [dotted] (0.7, 1) .. controls (0.3,0) .. (0.7,-1);
     \end{tikzpicture}
-    \caption{More data points enable more precise estimation of the class boundary.}
     \label{fig:density_b}
 \end{figure}
 
 
-
-
-
-** Our method
-
-How does our method work?
+\begin{center}
+\vspace{2em}More data points enable more precise estimation of the class boundary.
+\end{center}
 
 ** Estimating Sparsity/Density
 
@@ -157,8 +188,14 @@ How does our method work?
     \label{eq:rbf}
 \end{equation}
 
+\vspace{2em}
 
-Providing the RBF's width parameter is suitably chosen, we achieve a good measure of the density through the sum of the RBFs centred on all data points $X^c$ of class $c$ (Eq.~\ref{eq:density}).
+Providing the RBF's width parameter is suitably chosen, we achieve a good measure of
+the density through the sum of the RBFs centred on all data points $X^c$ of class $c$
+(Eq.~\ref{eq:density}).
+
+\vspace{2em}
+
 \begin{equation}
     \rho_c(x) = \sum_{x_j \in X^c} \varphi(x; x_j)
     \label{eq:density}
@@ -169,7 +206,7 @@ Providing the RBF's width parameter is suitably chosen, we achieve a good measur
 
 \begin{figure}
     \centering
-    \begin{tikzpicture}[scale=0.6]
+    \begin{tikzpicture}[scale=.8]
         \draw (0.4,0) node {$x_1$};
         \draw[dashed] (0,0) circle (1.0cm);
         \draw[dashed] (0,0) circle (1.45cm);
@@ -186,40 +223,58 @@ Providing the RBF's width parameter is suitably chosen, we achieve a good measur
         \draw (2,-0.4) node {$x_3$};
         \draw[thick,dotted] (2,-0.4) circle (0.5cm);
     \end{tikzpicture}
-\caption{Iterative $\varepsilon$-expansion process in a binary class scenario. The two classes are distinguished by the dotted and solid circles.}
 \label{fig:e_expansion}
 \end{figure}
 
-\begin{equation}
+\begin{center}
+\vspace{2em}Iterative $\varepsilon$-expansion process in a binary class scenario. The
+two classes are distinguished by the dotted and solid circles.\vspace{1em}
+\end{center}
+
+\begin{equation*}
     \Delta\varepsilon_i^n=e^{-\rho_{c(i)}(x_i) \cdot n}
     \label{eq:step}
-\end{equation}
+\end{equation*}
 
 * Results
 
-
 ** Iris Dataset
 
+*** Problem statement                                                 :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
 
+#+ATTR_ORG: :width 200px
+#+ATTR_LATEX: :width 1.0\textwidth
+[[file:images/Petal-sepal.jpg]]
 
+*** Graph                                                             :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.7
+:END:
+
+#+ATTR_ORG: :width 200px
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/iris-eps.png}
-    \caption{Proposed adaptive neighbourhoods for the Iris dataset. The three classes of flower are represented by different shaped markers. The size of the neighbourhood for each sample is indicated with a circle centred on the data point. Intersections between neighbourhoods of different classes are not real but are visualisation artefacts coming from the 2D projection of 4 dimensions.}
+    \includegraphics[width=\textwidth]{images/iris-eps.png}
     \label{fig:iris}
 \end{figure}
 
+[cite:@DBLP:journals/corr/abs-2101-09108]
 
-
-** Training
+** Defending against Adversarial Examples
 
 \[
 \mathcal{L}_{total} = (1 - \alpha) \mathcal{L}_{cls} + \alpha \mathcal{L}_{adv}
 \]
 
-where \( \mathcal{L}_{cls} \) and \( \mathcal{L}_{adv} \) are the cross-entropy
-losses of the un-perturbed and perturbed data, respectively
+
+\vspace{2em}
+
+\begin{center}where \( \mathcal{L}_{cls} \) and \( \mathcal{L}_{adv} \) are the cross-entropy
+losses of the un-perturbed and perturbed data, respectively.\end{center}
 
 ** Results
 
@@ -228,7 +283,7 @@ losses of the un-perturbed and perturbed data, respectively
 \caption{\label{tab:irir_results}$F_1$ score of DNN for the Iris dataset using various adversarial defence methods. Scores are in the format: mean (standard deviation) over 10 k-folds. Bold font face indicates the best form of attack for each type of defence method.}
 \centering
 \begin{adjustbox}{center}
-\begin{tabular}[t]{cccccc}
+\resizebox{\textwidth}{!}{\begin{tabular}[t]{cccccc}
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{4}{c}{Attack} \\
 \cmidrule(l{3pt}r{3pt}){3-6}
@@ -242,7 +297,7 @@ Random+AN & 0.9936 (0.0193) & 0.9272 (0.0620) & 0.8274 (0.0918) & \textbf{0.7935
 FGSM+AN & 0.9936 (0.0193) & 0.9406 (0.0745) & 0.8420 (0.0987) & \textbf{0.8140 (0.1085)} & 0.8588 (0.1157)\\
 PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0.0899)} & 0.8753 (0.0864)\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{adjustbox}
 \end{table}
 
@@ -251,17 +306,18 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 
 \begin{figure}[t]
 \centering
-\resizebox{0.8\textwidth}{!}{\input{./images/adversarial_example}}
-\caption{Adversarial example generation methods applied to an solar event containing both Type II and Type III bursts. Top row shows the original predictions made without applying any adversarial attacks. The second row shows PGD, third FGSM, and bottom row DAG method. Left column images are the original event with a red rectangle to highlight the Type II burst, with the centre column being the amount of pixel-wise perturbation. The result of the perturbation is shown in the right column with predicted detections made by Faster R-CNN in blue rectangles.}
+\resizebox{0.55\textwidth}{!}{\input{./images/adversarial_example}}
 \label{fig:adv_example}
 \end{figure}
+[cite:@Solr-cronfa59258]
+
 ** Results
 
 \begin{table}
 \caption{\label{tab:adv_fscore}$F_1$ score performance on the WAVES dataset using Faster R-CNN. Numbers highlighted in a bold font face indicate the best achieving adversarial attack for each form of defence.}
 \centering
 \begin{adjustbox}{center}
-\begin{tabular}[t]{rccccccc}
+\resizebox{\textwidth}{!}{\begin{tabular}[t]{rccccccc}
 \toprule
 \multicolumn{2}{c}{ } & \multicolumn{6}{c}{Attack} \\
 \cmidrule(l{3pt}r{3pt}){3-8}
@@ -273,27 +329,50 @@ FGSM+AN & 0.480 & 0.465 & 0.462 & \textbf{0.007} & \textbf{0.007} & 0.043 & 0.02
 PGD & 0.421 & 0.425 & 0.379 & 0.391 & 0.359 & 0.378 & \textbf{0.259}\\
 PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{adjustbox}
 \end{table}
 
+* Conclusion
+
 ** Summary of Results
 
-This is the summary
-
-* Conclusion
+- Adaptive neighbourhoods is an effective method that compliments existing
+  adversarial generation methods such as FGSM & PGD.
+- Adaptive neighbourhoods performs better with optimisation-based procedures such as
+  PGD.
+- Through the use of adaptive neighbourhoods, one can meaningfully define searchable
+  regions for datasets other than image-based data where adversarial examples can be
+  visually inspected.
 
 ** Source code
 
 #+ATTR_LATEX: :width 0.8\textwidth
 [[file:images/github-repo.png]]
 
-https://github.com/jaypmorgan/adaptive-neighbourhoods
-https://gitlab.com/jaymorgan/adaptive-neighbourhoods
-https://git.sr.ht/~jaymorgan/adaptive-neighbourhoods
+\begin{center}
+\url{https://github.com/jaypmorgan/adaptive-neighbourhoods}
+\url{https://gibtlab.com/jaymorgan/adaptive-neighbourhoods}
+\url{https://git.sr.ht/~jaymorgan/adaptive-neighbourhoods}
+\end{center}
 
-** Thank you
+** Link to the Slides
 
+#+ATTR_LATEX: :width 1.0\textwidth
+[[file:images/presentations.png]]
+
+\begin{center}
+\url{https://github.com/jaypmorgan/presentations}
+\end{center}
+
+** 
+:PROPERTIES:
+:BEAMER_OPT: plain,c
+:END:
+
+\begin{center}
+\vspace{1em}\Huge Thank you!
+\end{center}
 ** References
 
 #+print_bibliography:
