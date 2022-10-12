@@ -26,7 +26,7 @@ of this talk.
 #+begin_comment
 But before I begin answering this question, I would like to thank my collaborators on
 this project - some of whom are in the audience today - as this work would not be
-possible without
+possible without.
 #+end_comment
 
 *** Adeline                                                           :BMCOL:
@@ -50,6 +50,7 @@ University of Toulon
 
 #+begin_center
 Arno Pauly
+
 Swansea University
 #+end_center
 
@@ -65,7 +66,7 @@ Monika Seisenberger
 Swansea University
 #+end_center
 
-** Deep Neural Networks
+** Deep Learning models
 
 #+begin_comment
 It would be preaching to the choir to discuss the revolution undergone in the space
@@ -75,18 +76,37 @@ evolved to the point where they have become a proverbial hammer where everything
 nail. There is no shortage of questions to which someone will answer with 'AI?'.
 #+end_comment
 
+The abilities of Deep Learning models have only continued to improve, and the range
+of tasks they can perform is growing: from simple digit recognition, to simultaneous
+detection of multiple objects in a scene.
+
+*** MNIST                                                             :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.3
+:END:
+
+[[file:images/mnist.png]]
+
+*** Object detection                                                  :BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.7
+:END:
+
+#+ATTR_LATEX: :width 0.9\textwidth
+
 [[file:images/Object-detection-in-a-dense-scene.jpg]]
 [cite:@unknown]
 
 ** Adversarial Examples
 
 #+begin_comment
-But while we glorify the abilities of Deep Learning, we are also very aware of their
-metaphorical blind-spots or optical illusions. To us in the audience, hopefully all
-humans, in both the left and right image we see a panda. But, for the Deep Learning
-powered robots among us, we might see a very different mammal, a gibbon. This, we
-call an adversarial example, a 'catastrophic' miss-classification resulting from a
-small perturbation or change to the input.
+But while we could praise the abilities of Deep Learning, we are also very aware of
+their metaphorical blind-spots or optical illusions. For example, to us in the
+audience, hopefully all humans, in both the input and output image we see a
+panda. But, for the Deep Learning powered robots among us, we might see a very
+different mammal in the output, a gibbon. This, we call an adversarial example, a
+'catastrophic' miss-classification resulting from a small perturbation or change to
+the input.
 
 For us, the human, the reason for this may not be immediately clear, they look
 exactly the same. But let's not reject Deep Learning entirely because of this
@@ -94,15 +114,24 @@ deficiency. Indeed, our optical systems are also subject to some very strange op
 illusions as well.
 #+end_comment
 
+Adversarial examples are created by changing pixel values in the input image,
+resulting in an output image that looks almost identical but the Deep Learning model
+predicts and entirely different class for this output image.
+
 [[file:images/fgsm_panda_image.png]]
 [cite:@goodfellow2014explaining]
 
 ** Motivating Principles
 
+For safety critical systems, miss-classifications are more catastrophic.
+
 #+begin_comment
 It is not so much a catastrophy when we label a panda as a gibbon, but if Deep
 Learning is going to be used in pretty much every applicable setting, including those
-that are safety critical, well, the potential implications are clear.
+that are safety critical, well, the potential implications are more severe. In this
+example we have an image of various street signs that an fully-automatic vehicle may
+use for guidance. Here we see that through a very small number of changes to these
+pixels, the classification has changed to something that could prove to be deadly.
 
 For Deep Learning to more useful, we will want to elucidate the presence of these
 adversarial examples.
@@ -148,10 +177,11 @@ adversarial example.
 ** Projected Gradient Descent (PGD)
 
 #+begin_comment
-This FGSM method was then further developed into the Projected Gradient Descent method or
-PGD, where multiple small steps are taken in the direction that will decrease the
-loss for an incorrect class. Like FGSM, the perturbations are bounded by a
-preconceived small number.
+This FGSM method was then further developed into the Projected Gradient Descent
+method or PGD, where multiple small steps are taken in the direction that will
+decrease the loss for an incorrect class. Like FGSM, the perturbations are bounded by
+a preconceived small number. This small number defines the size of the $L_2$ ball in
+this example.
 #+end_comment
 #+CAPTION: https://towardsdatascience.com/know-your-enemy-7f7c5038bdf3
 #+ATTR_LATEX: :width 0.5\textwidth
@@ -177,34 +207,56 @@ an adversarial example can be found.
 
 #+begin_comment
 Certainly, this suitably small value, the maximum amount of perturbation, is
-important. The larger this value gets, the less like the original image the
-adversarial example becomes. One could ask, at what point does a 3 no longer look like a 3,
-even too the human. At that point, one could suppose, we have perturbed the image too much.
+important.
+
+Here we have an image where on the top row our maximum amount of perturbation is 0.2
+and we can see that the image of a 3 is somewhat change. Indeed the classification of
+3 is made to be a 0 by the Deep Learning model. The larger the maximum perturbation
+as shown on the lower rows, the more like noise the image becomes.
+
+The larger this value gets, the less like the original image the adversarial example
+becomes. One could ask, at what point does a 3 no longer look like a 3, even too the
+human. At that point, one could suppose, we have perturbed the image too much.
 #+end_comment
 
 [[file:images/eos.png]]
 
-** Non-image representations
+** How to decide maximum perturbation for non-image representations
 
 #+begin_comment
-And while for images, it is trivial to look at the potential adversarial example and
+In this example of measurements of 3 types of flowers, it is possible to perturb or
+'push' any data point past any true class boundaries from one type of flower into
+another type of flower.
+
+While for images, it is trivial to look at the potential adversarial example and
 see that it still looks likes a panda and still looks like a number 3 despite any
 modification to the image, for non-image data, may I ask you how much perturbation
 can I apply to each data point before I've changed the data point too much?
 
-In this example of measurements of 3 types of flowers, will perturbing any data point
-here 'push' it past any true class boundaries from one type of flower into another?
-
-Here we expose the problem with 'suitably-small', how small should small be?
+Here we expose the problem with 'suitably-small', how small should small be? For
+non-image datasets it is difficult to say exactly what that small amount of
+perturbation should be, as there can be areas where we don't know if we're passing
+any true class boundary.
 #+end_comment
 
 #+ATTR_LATEX: :width 0.7\textwidth
 [[file:images/iris.png]]
 
+* Results
+
+** 
+:PROPERTIES:
+:BEAMER_OPT: plain,c
+:END:
+
+#+begin_center
+\vspace{1em}\Huge Our method -- Adaptive Neighbourhoods
+#+end_center
+
 ** Perturbations shouldn't pass class boundaries
 
 #+begin_comment
-To answer the question of how small is suitably-small, we must understand
+To answer the question of how small is suitably-small, we must reiterate
 firstly that any perturbation to a data point such as $x_i$ here should not pass any
 true class boundary. If we did so, we could find what we think is an adversarial
 example, but is in actual fact a true change of class as a result of our
@@ -330,7 +382,7 @@ data points $X^c$ of class $c$ (Eq.~\ref{eq:density}).
     \label{eq:density}
 \end{equation}
 
-** Expansion
+** Iterative expansion to create `adapted neighbourhoods'
 
 #+begin_comment
 Once we have measured the density with which to estimate class boundaries, we can
@@ -396,8 +448,17 @@ Using this method, I would like to illustrate it's contribution to existing
 adversarial generation methods.
 #+end_comment
 
+** Aim of Experimentation
 
-** Iris Dataset
+We'd like to answer the following:
+1. Does using adaptive neighbourhood provide any benefit? Why use it at all?
+2. Can existing methods work for non-image based datasets, or do we need to design
+   new methods entirely?
+   
+
+
+
+** Classification of Iris flowers -- problem statement
 
 #+begin_comment
 Firstly, we have a very simple task. The classification of Iris flower types, using
@@ -431,7 +492,7 @@ neighbourhoods are small.
 
 [cite:@DBLP:journals/corr/abs-2101-09108]
 
-** Results
+** Attack and defence results for the Iris dataset classification task
 
 #+begin_comment
 When we replace the notion of suitably small in FGSM and PGD with our adapted
@@ -444,14 +505,9 @@ attacks or generation of adversarial examples is much stronger. We are able to f
 reduce accuracy of the model thanks to adapted size of neighbourhoods. Secondly, when
 using adaptive neighbourhoods with FGSM and PGD, we are also able to improve the
 defence.
-
-What we learn here then is that our adaptive neighbourhoods is able to strengthen the
-form of adversarial attack and defence.
 #+end_comment
 
 \begin{table}
-
-\caption{\label{tab:irir_results}$F_1$ score of DNN for the Iris dataset using various adversarial defence methods. Scores are in the format: mean (standard deviation) over 10 k-folds. Bold font face indicates the best form of attack for each type of defence method.}
 \centering
 \begin{adjustbox}{center}
 \resizebox{\textwidth}{!}{\begin{tabular}[t]{cccccc}
@@ -460,20 +516,24 @@ form of adversarial attack and defence.
 \cmidrule(l{3pt}r{3pt}){3-6}
 Defence & None & FGSM & PGD & FGSM+AN & PGD+AN\\
 \midrule
-None & 0.9745 (0.0413) & 0.9278 (0.0618) & 0.8572 (0.1036) & \textbf{0.7764 (0.0813)} & 0.8461 (0.0968)\\
-FGSM & 0.9811 (0.0396) & 0.9408 (0.0757) & 0.8468 (0.1080) & \textbf{0.7873 (0.0785)} & 0.8448 (0.0698)\\
-PGD & 0.9867 (0.0400) & 0.9462 (0.0740) & 0.8680 (0.0740) & \textbf{0.8508 (0.0746)} & 0.8759 (0.0823)\\
+None & 0.9745 (0.0413) & \textcolor{red}{0.9278 (0.0618)} & 0.8572 (0.1036) & \textcolor{red}{0.7764 (0.0813)} & 0.8461 (0.0968)\\
+FGSM & 0.9811 (0.0396) & 0.9408 (0.0757) & 0.8468 (0.1080) & 0.7873 (0.0785) & 0.8448 (0.0698)\\
+PGD & 0.9867 (0.0400) & 0.9462 (0.0740) & 0.8680 (0.0740) & 0.8508 (0.0746) & 0.8759 (0.0823)\\
 \midrule
-Random+AN & 0.9936 (0.0193) & 0.9272 (0.0620) & 0.8274 (0.0918) & \textbf{0.7935 (0.0822)} & 0.8454 (0.0864)\\
-FGSM+AN & 0.9936 (0.0193) & 0.9406 (0.0745) & 0.8420 (0.0987) & \textbf{0.8140 (0.1085)} & 0.8588 (0.1157)\\
-PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0.0899)} & 0.8753 (0.0864)\\
+Random+AN & 0.9936 (0.0193) & 0.9272 (0.0620) & 0.8274 (0.0918) & 0.7935 (0.0822) & 0.8454 (0.0864)\\
+FGSM+AN & 0.9936 (0.0193) & \textcolor{red}{0.9406 (0.0745)} & 0.8420 (0.0987) & \textcolor{red}{0.8140 (0.1085)} & 0.8588 (0.1157)\\
+PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & 0.8679 (0.0899) & 0.8753 (0.0864)\\
 \bottomrule
 \end{tabular}}
 \end{adjustbox}
 \end{table}
 
+#+begin_center
+What we learn here then is that our adaptive neighbourhoods is able to strengthen the
+form of adversarial attack and defence.
+#+end_center
 
-** Adversarial Training for Solar Burst Detection
+** Adversarial examples in a Solar Burst Detection task -- problem statement
 
 #+begin_comment
 Our second set of results we will look at today, is from the detection of solar
@@ -496,7 +556,7 @@ many false detections.
 \end{figure}
 [cite:@Solr-cronfa59258]
 
-** Results
+** Attack and defence results for the solar bursts task
 
 #+begin_comment
 Once again by combining adaptive neighbourhoods with these forms of adversarial
@@ -510,7 +570,6 @@ This reiterates the pattern we saw with the previous results.
 #+end_comment
 
 \begin{table}
-\caption{\label{tab:adv_fscore}$F_1$ score performance on the WAVES dataset using Faster R-CNN. Numbers highlighted in a bold font face indicate the best achieving adversarial attack for each form of defence.}
 \centering
 \begin{adjustbox}{center}
 \resizebox{\textwidth}{!}{\begin{tabular}[t]{rccccccc}
@@ -519,20 +578,25 @@ This reiterates the pattern we saw with the previous results.
 \cmidrule(l{3pt}r{3pt}){3-8}
 Defence & None & FGSM & FGSM+AN & PGD & PGD+AN & DAG & DAG+AN\\
 \midrule
-None & 0.568 & 0.539 & 0.486 & 0.198 & \textbf{0.105} & 0.399 & 0.251\\
-FGSM & 0.463 & 0.458 & 0.178 & 0.013 & \textbf{0.012} & 0.055 & 0.028\\
-FGSM+AN & 0.480 & 0.465 & 0.462 & \textbf{0.007} & \textbf{0.007} & 0.043 & 0.023\\
-PGD & 0.421 & 0.425 & 0.379 & 0.391 & 0.359 & 0.378 & \textbf{0.259}\\
-PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
+None & 0.568 & \textcolor{red}{0.539} & \textcolor{red}{0.486} & 0.198 & 0.105 & 0.399 & 0.251\\
+FGSM & 0.463 & \textcolor{red}{0.458} & 0.178 & 0.013 & 0.012 & 0.055 & 0.028\\
+FGSM+AN & 0.480 & \textcolor{red}{0.465} & 0.462 & 0.007 & 0.007 & 0.043 & 0.023\\
+PGD & 0.421 & 0.425 & 0.379 & 0.391 & 0.359 & 0.378 & 0.259\\
+PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & 0.212\\
 \bottomrule
 \end{tabular}}
 \end{adjustbox}
 \end{table}
 
+#+begin_center
+Like our previous task, we see that, through the combination with adaptive
+neighbourhoods, the attack is more successful. And likewise the defence is more
+powerful.
+#+end_center
+
 * Conclusion
 
 ** Summary of Results
-
 
 #+begin_comment
 So in summary what we see is adversarial example generation methods such as FGSM &
@@ -542,11 +606,13 @@ non-image based data, enabling the use of these adversarial attacks for other ta
 #+end_comment
 
 
-- Adaptive neighbourhoods is an effective method that compliments existing
-  adversarial generation methods such as FGSM & PGD.
-- Through the use of adaptive neighbourhoods, one can meaningfully define searchable
-  regions for datasets other than image-based data where adversarial examples can be
-  visually inspected.
+We'd like to answer the following:
+1. Does using adaptive neighbourhood provide any benefit? Why use it at all? -
+   *Adaptive neighbourhoods is an effective method that compliments existing adversarial generation methods such as FGSM & PGD.*
+2. Can existing methods work for non-image based datasets, or do we need to design
+   new methods entirely? - *Through the use of adaptive neighbourhoods, one can
+   meaningfully define searchable regions for datasets other than image-based data
+   where adversarial examples can be visually inspected.*
 
 ** Source code
 

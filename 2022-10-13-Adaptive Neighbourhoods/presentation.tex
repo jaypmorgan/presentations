@@ -1,4 +1,4 @@
-% Created 2022-10-12 Wed 14:06
+% Created 2022-10-12 Wed 19:54
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller]{beamer}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 \maketitle
 
 \section{Introduction}
-\label{sec:org31a335a}
+\label{sec:org95dae40}
 
-\begin{frame}[label={sec:org99dcfe8}]{A thank you to my collaborators}
+\begin{frame}[label={sec:orgda7c189}]{A thank you to my collaborators}
 \begin{columns}
 \begin{column}{0.3\columnwidth}
 \begin{center}
@@ -54,6 +54,7 @@ University of Toulon
 
 \begin{center}
 Arno Pauly
+
 Swansea University
 \end{center}
 \end{column}
@@ -71,21 +72,41 @@ Swansea University
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org3bbab8c}]{Deep Neural Networks}
+\begin{frame}[label={sec:orgf6978f4}]{Deep Learning models}
+The abilities of Deep Learning models have only continued to improve, and the range
+of tasks they can perform is growing: from simple digit recognition, to simultaneous
+detection of multiple objects in a scene.
+
+\begin{columns}
+\begin{column}{0.3\columnwidth}
+\begin{center}
+\includegraphics[width=.9\linewidth]{images/mnist.png}
+\end{center}
+\end{column}
+
+\begin{column}{0.7\columnwidth}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/Object-detection-in-a-dense-scene.jpg}
 \end{center}
 (Potdar, Kedar and Pai, Chinmay and Akolkar, Sukrut, 2018)
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org35dff4c}]{Adversarial Examples}
+\begin{frame}[label={sec:org3b504d9}]{Adversarial Examples}
+Adversarial examples are created by changing pixel values in the input image,
+resulting in an output image that looks almost identical but the Deep Learning model
+predicts and entirely different class for this output image.
+
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/fgsm_panda_image.png}
 \end{center}
 (Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian, 2014)
 \end{frame}
 
-\begin{frame}[label={sec:orga8f8786}]{Motivating Principles}
+\begin{frame}[label={sec:org4fda18b}]{Motivating Principles}
+For safety critical systems, miss-classifications are more catastrophic.
+
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/signs.png}
 \end{center}
@@ -93,9 +114,9 @@ Swansea University
 \end{frame}
 
 \section{Adaptive Neighbourhoods}
-\label{sec:org3b04df0}
+\label{sec:orge927552}
 
-\begin{frame}[label={sec:orge7a7eec}]{Outline for this talk}
+\begin{frame}[label={sec:orga966cae}]{Outline for this talk}
 \begin{enumerate}
 \item Look at existing solutions
 \item Our complimentary method
@@ -108,14 +129,14 @@ Swansea University
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:orgc756f58}]{Fast Gradient Sign Method (FGSM)}
+\begin{frame}[label={sec:org657c1a1}]{Fast Gradient Sign Method (FGSM)}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/fgsm_panda_image.png}
 \end{center}
 (Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian, 2014)
 \end{frame}
 
-\begin{frame}[label={sec:org78bd5a9}]{Projected Gradient Descent (PGD)}
+\begin{frame}[label={sec:org4cec575}]{Projected Gradient Descent (PGD)}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{images/projected-gradient-descent.png}
@@ -125,25 +146,34 @@ Swansea University
 (Madry, Aleksander and Makelov, Aleksandar and Schmidt, Ludwig and Tsipras, Dimitris and Vladu, Adrian, 2017)
 \end{frame}
 
-\begin{frame}[label={sec:org4f5db5c}]{What do we learn from these methods?}
+\begin{frame}[label={sec:org6b6f282}]{What do we learn from these methods?}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/perturbation.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgf39bfe0}]{Amount of change is important}
+\begin{frame}[label={sec:orgcca2f10}]{Amount of change is important}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/eos.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org7c9eb37}]{Non-image representations}
+\begin{frame}[label={sec:org8d9e799}]{How to decide maximum perturbation for non-image representations}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{images/iris.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgc0e1f6c}]{Perturbations shouldn't pass class boundaries}
+\section{Results}
+\label{sec:org6f03364}
+
+\begin{frame}[label={sec:org85f8e78},plain,c]{}
+\begin{center}
+\vspace{1em}\Huge Our method -- Adaptive Neighbourhoods
+\end{center}
+\end{frame}
+
+\begin{frame}[label={sec:orga4f2c86}]{Perturbations shouldn't pass class boundaries}
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=1.3]
@@ -168,7 +198,7 @@ point over true class boundaries.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org92627eb}]{Estimated boundaries can be deceiving}
+\begin{frame}[label={sec:org4e03420}]{Estimated boundaries can be deceiving}
 \begin{columns}
 \begin{column}{0.5\columnwidth}
 \begin{figure}
@@ -217,7 +247,7 @@ point over true class boundaries.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org61681e9}]{Estimating Sparsity/Density}
+\begin{frame}[label={sec:org39e1d0d}]{Estimating Sparsity/Density}
 \begin{equation}
     \varphi(x; \overline{x}) =  \frac{1}{\sqrt{1 + (\varepsilon r)^2}},\; \text{where}\; r = \parallel \overline{x} - x \parallel
     \label{eq:rbf}
@@ -236,7 +266,7 @@ data points \(X^c\) of class \(c\) (Eq.\textasciitilde{}\ref{eq:density}).
 \end{equation}
 \end{frame}
 
-\begin{frame}[label={sec:orge6f0228}]{Expansion}
+\begin{frame}[label={sec:org1030207}]{Iterative expansion to create `adapted neighbourhoods'}
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=.8]
@@ -271,16 +301,27 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \end{frame}
 
 \section{Results}
-\label{sec:org341e1f0}
+\label{sec:org95f06ef}
 
-\begin{frame}[label={sec:orgd704695},plain,c]{}
+\begin{frame}[label={sec:orgf29c018},plain,c]{}
 \begin{center}
 \vspace{1em}\Huge Results
 \end{center}
 \end{frame}
 
+\begin{frame}[label={sec:orgbb6578c}]{Aim of Experimentation}
+We'd like to answer the following:
+\begin{enumerate}
+\item Does using adaptive neighbourhood provide any benefit? Why use it at all?
+\item Can existing methods work for non-image based datasets, or do we need to design
+new methods entirely?
+\end{enumerate}
+\end{frame}
 
-\begin{frame}[label={sec:orgd3afe91}]{Iris Dataset}
+
+
+
+\begin{frame}[label={sec:orge9d0460}]{Classification of Iris flowers -- problem statement}
 \begin{columns}
 \begin{column}{0.3\columnwidth}
 \begin{center}
@@ -300,10 +341,8 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org824848f}]{Results}
+\begin{frame}[label={sec:org75a0b42}]{Attack and defence results for the Iris dataset classification task}
 \begin{table}
-
-\caption{\label{tab:irir_results}$F_1$ score of DNN for the Iris dataset using various adversarial defence methods. Scores are in the format: mean (standard deviation) over 10 k-folds. Bold font face indicates the best form of attack for each type of defence method.}
 \centering
 \begin{adjustbox}{center}
 \resizebox{\textwidth}{!}{\begin{tabular}[t]{cccccc}
@@ -312,21 +351,25 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \cmidrule(l{3pt}r{3pt}){3-6}
 Defence & None & FGSM & PGD & FGSM+AN & PGD+AN\\
 \midrule
-None & 0.9745 (0.0413) & 0.9278 (0.0618) & 0.8572 (0.1036) & \textbf{0.7764 (0.0813)} & 0.8461 (0.0968)\\
-FGSM & 0.9811 (0.0396) & 0.9408 (0.0757) & 0.8468 (0.1080) & \textbf{0.7873 (0.0785)} & 0.8448 (0.0698)\\
-PGD & 0.9867 (0.0400) & 0.9462 (0.0740) & 0.8680 (0.0740) & \textbf{0.8508 (0.0746)} & 0.8759 (0.0823)\\
+None & 0.9745 (0.0413) & \textcolor{red}{0.9278 (0.0618)} & 0.8572 (0.1036) & \textcolor{red}{0.7764 (0.0813)} & 0.8461 (0.0968)\\
+FGSM & 0.9811 (0.0396) & 0.9408 (0.0757) & 0.8468 (0.1080) & 0.7873 (0.0785) & 0.8448 (0.0698)\\
+PGD & 0.9867 (0.0400) & 0.9462 (0.0740) & 0.8680 (0.0740) & 0.8508 (0.0746) & 0.8759 (0.0823)\\
 \midrule
-Random+AN & 0.9936 (0.0193) & 0.9272 (0.0620) & 0.8274 (0.0918) & \textbf{0.7935 (0.0822)} & 0.8454 (0.0864)\\
-FGSM+AN & 0.9936 (0.0193) & 0.9406 (0.0745) & 0.8420 (0.0987) & \textbf{0.8140 (0.1085)} & 0.8588 (0.1157)\\
-PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0.0899)} & 0.8753 (0.0864)\\
+Random+AN & 0.9936 (0.0193) & 0.9272 (0.0620) & 0.8274 (0.0918) & 0.7935 (0.0822) & 0.8454 (0.0864)\\
+FGSM+AN & 0.9936 (0.0193) & \textcolor{red}{0.9406 (0.0745)} & 0.8420 (0.0987) & \textcolor{red}{0.8140 (0.1085)} & 0.8588 (0.1157)\\
+PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & 0.8679 (0.0899) & 0.8753 (0.0864)\\
 \bottomrule
 \end{tabular}}
 \end{adjustbox}
 \end{table}
+
+\begin{center}
+What we learn here then is that our adaptive neighbourhoods is able to strengthen the
+form of adversarial attack and defence.
+\end{center}
 \end{frame}
 
-
-\begin{frame}[label={sec:orgcc6d709}]{Adversarial Training for Solar Burst Detection}
+\begin{frame}[label={sec:orge92ca2e}]{Adversarial examples in a Solar Burst Detection task -- problem statement}
 \begin{figure}[t]
 \centering
 \resizebox{0.55\textwidth}{!}{\input{./images/adversarial_example}}
@@ -335,9 +378,8 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 (Jay Morgan, 2022)
 \end{frame}
 
-\begin{frame}[label={sec:org352b01d}]{Results}
+\begin{frame}[label={sec:org23d4987}]{Attack and defence results for the solar bursts task}
 \begin{table}
-\caption{\label{tab:adv_fscore}$F_1$ score performance on the WAVES dataset using Faster R-CNN. Numbers highlighted in a bold font face indicate the best achieving adversarial attack for each form of defence.}
 \centering
 \begin{adjustbox}{center}
 \resizebox{\textwidth}{!}{\begin{tabular}[t]{rccccccc}
@@ -346,31 +388,39 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 \cmidrule(l{3pt}r{3pt}){3-8}
 Defence & None & FGSM & FGSM+AN & PGD & PGD+AN & DAG & DAG+AN\\
 \midrule
-None & 0.568 & 0.539 & 0.486 & 0.198 & \textbf{0.105} & 0.399 & 0.251\\
-FGSM & 0.463 & 0.458 & 0.178 & 0.013 & \textbf{0.012} & 0.055 & 0.028\\
-FGSM+AN & 0.480 & 0.465 & 0.462 & \textbf{0.007} & \textbf{0.007} & 0.043 & 0.023\\
-PGD & 0.421 & 0.425 & 0.379 & 0.391 & 0.359 & 0.378 & \textbf{0.259}\\
-PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
+None & 0.568 & \textcolor{red}{0.539} & \textcolor{red}{0.486} & 0.198 & 0.105 & 0.399 & 0.251\\
+FGSM & 0.463 & \textcolor{red}{0.458} & 0.178 & 0.013 & 0.012 & 0.055 & 0.028\\
+FGSM+AN & 0.480 & \textcolor{red}{0.465} & 0.462 & 0.007 & 0.007 & 0.043 & 0.023\\
+PGD & 0.421 & 0.425 & 0.379 & 0.391 & 0.359 & 0.378 & 0.259\\
+PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & 0.212\\
 \bottomrule
 \end{tabular}}
 \end{adjustbox}
 \end{table}
+
+\begin{center}
+Like our previous task, we see that, through the combination with adaptive
+neighbourhoods, the attack is more successful. And likewise the defence is more
+powerful.
+\end{center}
 \end{frame}
 
 \section{Conclusion}
-\label{sec:orgd6b8901}
+\label{sec:org915a0e0}
 
-\begin{frame}[label={sec:org37c7592}]{Summary of Results}
-\begin{itemize}
-\item Adaptive neighbourhoods is an effective method that compliments existing
-adversarial generation methods such as FGSM \& PGD.
-\item Through the use of adaptive neighbourhoods, one can meaningfully define searchable
-regions for datasets other than image-based data where adversarial examples can be
-visually inspected.
-\end{itemize}
+\begin{frame}[label={sec:org3a26648}]{Summary of Results}
+We'd like to answer the following:
+\begin{enumerate}
+\item Does using adaptive neighbourhood provide any benefit? Why use it at all? -
+\alert{Adaptive neighbourhoods is an effective method that compliments existing adversarial generation methods such as FGSM \& PGD.}
+\item Can existing methods work for non-image based datasets, or do we need to design
+new methods entirely? - \alert{Through the use of adaptive neighbourhoods, one can
+meaningfully define searchable regions for datasets other than image-based data
+where adversarial examples can be visually inspected.}
+\end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org0d7f017}]{Source code}
+\begin{frame}[label={sec:org093242c}]{Source code}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/github-repo.png}
 \end{center}
@@ -382,7 +432,7 @@ visually inspected.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org37f0ba7}]{Link to the Slides}
+\begin{frame}[label={sec:orgbcbd8ce}]{Link to the Slides}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{images/presentations.png}
 \end{center}
@@ -392,13 +442,13 @@ visually inspected.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org1146510},plain,c]{}
+\begin{frame}[label={sec:org24fee9d},plain,c]{}
 \begin{center}
 \vspace{1em}\Huge Thank you!
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org9c6c0d0}]{References}
+\begin{frame}[label={sec:org1daeff4}]{References}
 \noindent
 Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian (2014). \emph{Explaining and harnessing adversarial examples}, arXiv preprint arXiv:1412.6572.
 
