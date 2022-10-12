@@ -134,11 +134,12 @@ concluding remarks.
 
 #+begin_comment
 One principle method, we have already seen today: the Fast Gradient Sign Method or
-FGSM for short. This method works by moving the pixel values of the image that
+FGSM for short. This method works by moving the pixel values of the image in a way that
 increases the model's loss. These perturbations are chosen by inspecting the
 gradient of the model's loss with respect to the input image, taking the signs of
 these gradients and bounding the amount of perturbation by a suitably small number,
-such as in this case by multiplying the perturbation by 0.007.
+such as in this case by multiplying the perturbation by 0.007. The result is an
+adversarial example.
 #+end_comment
 
 [[file:images/fgsm_panda_image.png]]
@@ -161,7 +162,7 @@ preconceived small number.
 ** What do we learn from these methods?
 
 #+begin_comment
-In the interest of time, I will leave us with just these two methods, but sufficied
+In the interest of time, I will leave us with just these two methods, but sufficed
 to say, that when it comes to many white-box methods for creating adversarial
 examples, there is a consistent theme. That being a 'suitably-small' value to perturb
 the image by. In this diagram, we are referring to the $r$ value, the maximum amount
@@ -244,8 +245,8 @@ between these two classes. But, if we were to sample or get more data, we may fi
 that our initial assumptions were wrong, and that the true class boundary is indeed
 more complicated.
 
-So sparse amounts of information presents trust issues with our estimations of our
-estimations of the class boundaries.
+So sparse amounts of information presents trust issues with our estimations of the
+class boundaries.
 #+end_comment
 
 *** Figure 2                                                          :BMCOL:
@@ -333,7 +334,7 @@ data points $X^c$ of class $c$ (Eq.~\ref{eq:density}).
 
 #+begin_comment
 Once we have measured the density with which to estimate class boundaries, we can
-create our neighbourhoods for which we wish to search for adversarial examples.
+create our neighbourhoods to search for adversarial examples.
 
 This iterative expansion of neighbourhoods should stop when it touches the
 neighbourhood of a different class, and it's expansion should be tempered by the
@@ -392,7 +393,7 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 
 #+begin_comment
 Using this method, I would like to illustrate it's contribution to existing
-adversarial example generation methods.
+adversarial generation methods.
 #+end_comment
 
 
@@ -498,8 +499,8 @@ many false detections.
 ** Results
 
 #+begin_comment
-Once again combining adaptive neighbourhoods with these forms of adversarial attack,
-and we get another large array of numbers, within which a pattern emerges.
+Once again by combining adaptive neighbourhoods with these forms of adversarial
+attacks, and we get another large array of numbers, within which a pattern emerges.
 
 Like our previous task, we see that, through the combination with adaptive
 neighbourhoods, the attack is more successful. And likewise the defence is more
@@ -535,9 +536,9 @@ PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
 
 #+begin_comment
 So in summary what we see is adversarial example generation methods such as FGSM &
-PGD can benefit from the adaptive neighbourhoods algorithm. Secondly, thanks for
+PGD can benefit from the adaptive neighbourhoods algorithm. Secondly, thanks to
 adaptive neighbourhoods, we can meaningfully create adversarial examples for
-non-image based data, enabling the use of adversarial examples for other tasks.
+non-image based data, enabling the use of these adversarial attacks for other tasks.
 #+end_comment
 
 
@@ -588,7 +589,7 @@ it using this link to github.
 
 #+begin_comment
 Finally, I would like to say a thank you to everyone for attending my talk today, and
-I would be happy to answer any questions you have!
+I would be happy to answer any questions you might have!
 #+end_comment
 
 #+begin_center
