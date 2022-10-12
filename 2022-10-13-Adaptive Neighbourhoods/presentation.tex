@@ -1,4 +1,4 @@
-% Created 2022-10-12 Wed 13:19
+% Created 2022-10-12 Wed 14:06
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller]{beamer}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 \maketitle
 
 \section{Introduction}
-\label{sec:org1062355}
+\label{sec:org31a335a}
 
-\begin{frame}[label={sec:orga0aa074}]{A thank you to my collaborators}
+\begin{frame}[label={sec:org99dcfe8}]{A thank you to my collaborators}
 \begin{columns}
 \begin{column}{0.3\columnwidth}
 \begin{center}
@@ -71,21 +71,21 @@ Swansea University
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org39ac04b}]{Deep Neural Networks}
+\begin{frame}[label={sec:org3bbab8c}]{Deep Neural Networks}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/Object-detection-in-a-dense-scene.jpg}
 \end{center}
 (Potdar, Kedar and Pai, Chinmay and Akolkar, Sukrut, 2018)
 \end{frame}
 
-\begin{frame}[label={sec:orgc1e9055}]{Adversarial Examples}
+\begin{frame}[label={sec:org35dff4c}]{Adversarial Examples}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/fgsm_panda_image.png}
 \end{center}
 (Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian, 2014)
 \end{frame}
 
-\begin{frame}[label={sec:org972f19a}]{Motivating Principles}
+\begin{frame}[label={sec:orga8f8786}]{Motivating Principles}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/signs.png}
 \end{center}
@@ -93,9 +93,9 @@ Swansea University
 \end{frame}
 
 \section{Adaptive Neighbourhoods}
-\label{sec:org573a4d7}
+\label{sec:org3b04df0}
 
-\begin{frame}[label={sec:orgdea27ff}]{Outline for this talk}
+\begin{frame}[label={sec:orge7a7eec}]{Outline for this talk}
 \begin{enumerate}
 \item Look at existing solutions
 \item Our complimentary method
@@ -108,14 +108,14 @@ Swansea University
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[label={sec:org490e2fd}]{Fast Gradient Sign Method (FGSM)}
+\begin{frame}[label={sec:orgc756f58}]{Fast Gradient Sign Method (FGSM)}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/fgsm_panda_image.png}
 \end{center}
 (Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian, 2014)
 \end{frame}
 
-\begin{frame}[label={sec:org6e9ecdf}]{Projected Gradient Descent (PGD)}
+\begin{frame}[label={sec:org78bd5a9}]{Projected Gradient Descent (PGD)}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.5\textwidth]{images/projected-gradient-descent.png}
@@ -125,32 +125,25 @@ Swansea University
 (Madry, Aleksander and Makelov, Aleksandar and Schmidt, Ludwig and Tsipras, Dimitris and Vladu, Adrian, 2017)
 \end{frame}
 
-\begin{frame}[label={sec:org16e7f7c}]{What do we learn from these methods?}
+\begin{frame}[label={sec:org4f5db5c}]{What do we learn from these methods?}
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/perturbation.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org4a7a1a8}]{Amount of change is important}
+\begin{frame}[label={sec:orgf39bfe0}]{Amount of change is important}
 \begin{center}
 \includegraphics[width=.9\linewidth]{images/eos.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org7be48c1}]{Non-image representations}
+\begin{frame}[label={sec:org7c9eb37}]{Non-image representations}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{images/iris.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orga438773},plain,c]{}
-\begin{center}
-\vspace{1em}\Huge Our work
-\end{center}
-\end{frame}
-
-
-\begin{frame}[label={sec:org9d688f0}]{Perturbations shouldn't pass class boundaries}
+\begin{frame}[label={sec:orgc0e1f6c}]{Perturbations shouldn't pass class boundaries}
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=1.3]
@@ -175,7 +168,7 @@ point over true class boundaries.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgbcbf1d1}]{Estimated boundaries can be deceiving}
+\begin{frame}[label={sec:org92627eb}]{Estimated boundaries can be deceiving}
 \begin{columns}
 \begin{column}{0.5\columnwidth}
 \begin{figure}
@@ -224,7 +217,7 @@ point over true class boundaries.
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org396d979}]{Estimating Sparsity/Density}
+\begin{frame}[label={sec:org61681e9}]{Estimating Sparsity/Density}
 \begin{equation}
     \varphi(x; \overline{x}) =  \frac{1}{\sqrt{1 + (\varepsilon r)^2}},\; \text{where}\; r = \parallel \overline{x} - x \parallel
     \label{eq:rbf}
@@ -243,7 +236,7 @@ data points \(X^c\) of class \(c\) (Eq.\textasciitilde{}\ref{eq:density}).
 \end{equation}
 \end{frame}
 
-\begin{frame}[label={sec:org8d726f3}]{Expansion}
+\begin{frame}[label={sec:orge6f0228}]{Expansion}
 \begin{figure}
     \centering
     \begin{tikzpicture}[scale=.8]
@@ -267,7 +260,7 @@ data points \(X^c\) of class \(c\) (Eq.\textasciitilde{}\ref{eq:density}).
 \end{figure}
 
 \begin{center}
-\vspace{2em}Iterative \$\(\varepsilon\)\$-expansion process in a binary class scenario. The
+\vspace{2em}Iterative \(\varepsilon\)-expansion process in a binary class scenario. The
 two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \end{center}
 
@@ -278,16 +271,16 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \end{frame}
 
 \section{Results}
-\label{sec:org8213f68}
+\label{sec:org341e1f0}
 
-\begin{frame}[label={sec:org85c5e96},plain,c]{}
+\begin{frame}[label={sec:orgd704695},plain,c]{}
 \begin{center}
 \vspace{1em}\Huge Results
 \end{center}
 \end{frame}
 
 
-\begin{frame}[label={sec:org6697504}]{Iris Dataset}
+\begin{frame}[label={sec:orgd3afe91}]{Iris Dataset}
 \begin{columns}
 \begin{column}{0.3\columnwidth}
 \begin{center}
@@ -307,7 +300,7 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org615f550}]{Results}
+\begin{frame}[label={sec:org824848f}]{Results}
 \begin{table}
 
 \caption{\label{tab:irir_results}$F_1$ score of DNN for the Iris dataset using various adversarial defence methods. Scores are in the format: mean (standard deviation) over 10 k-folds. Bold font face indicates the best form of attack for each type of defence method.}
@@ -333,7 +326,7 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 \end{frame}
 
 
-\begin{frame}[label={sec:org369b730}]{Adversarial Training for Solar Burst Detection}
+\begin{frame}[label={sec:orgcc6d709}]{Adversarial Training for Solar Burst Detection}
 \begin{figure}[t]
 \centering
 \resizebox{0.55\textwidth}{!}{\input{./images/adversarial_example}}
@@ -342,7 +335,7 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 (Jay Morgan, 2022)
 \end{frame}
 
-\begin{frame}[label={sec:org4c0e0a2}]{Results}
+\begin{frame}[label={sec:org352b01d}]{Results}
 \begin{table}
 \caption{\label{tab:adv_fscore}$F_1$ score performance on the WAVES dataset using Faster R-CNN. Numbers highlighted in a bold font face indicate the best achieving adversarial attack for each form of defence.}
 \centering
@@ -365,9 +358,9 @@ PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
 \end{frame}
 
 \section{Conclusion}
-\label{sec:org20c5849}
+\label{sec:orgd6b8901}
 
-\begin{frame}[label={sec:org25b9fd2}]{Summary of Results}
+\begin{frame}[label={sec:org37c7592}]{Summary of Results}
 \begin{itemize}
 \item Adaptive neighbourhoods is an effective method that compliments existing
 adversarial generation methods such as FGSM \& PGD.
@@ -377,7 +370,7 @@ visually inspected.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgab7d26e}]{Source code}
+\begin{frame}[label={sec:org0d7f017}]{Source code}
 \begin{center}
 \includegraphics[width=0.8\textwidth]{images/github-repo.png}
 \end{center}
@@ -389,7 +382,7 @@ visually inspected.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org3e4f608}]{Link to the Slides}
+\begin{frame}[label={sec:org37f0ba7}]{Link to the Slides}
 \begin{center}
 \includegraphics[width=1.0\textwidth]{images/presentations.png}
 \end{center}
@@ -399,13 +392,13 @@ visually inspected.
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orgab0b9c4},plain,c]{}
+\begin{frame}[label={sec:org1146510},plain,c]{}
 \begin{center}
 \vspace{1em}\Huge Thank you!
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:org101cce7}]{References}
+\begin{frame}[label={sec:org9c6c0d0}]{References}
 \noindent
 Goodfellow, Ian J and Shlens, Jonathon and Szegedy, Christian (2014). \emph{Explaining and harnessing adversarial examples}, arXiv preprint arXiv:1412.6572.
 

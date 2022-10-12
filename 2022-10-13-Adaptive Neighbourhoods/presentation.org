@@ -24,9 +24,9 @@ of this talk.
 ** A thank you to my collaborators
 
 #+begin_comment
-But before I begin answering this question, I'd like to thank my collaborators on
+But before I begin answering this question, I would like to thank my collaborators on
 this project - some of whom are in the audience today - as this work would not be
-possible without. So thank you Arno & Monika.
+possible without
 #+end_comment
 
 *** Adeline                                                           :BMCOL:
@@ -100,7 +100,7 @@ illusions as well.
 ** Motivating Principles
 
 #+begin_comment
-It is not so much a catastrophic when we label a panda as a gibbon, but if Deep
+It is not so much a catastrophy when we label a panda as a gibbon, but if Deep
 Learning is going to be used in pretty much every applicable setting, including those
 that are safety critical, well, the potential implications are clear.
 
@@ -147,7 +147,7 @@ such as in this case by multiplying the perturbation by 0.007.
 ** Projected Gradient Descent (PGD)
 
 #+begin_comment
-This method was then further developed into the Projected Gradient Descent method or
+This FGSM method was then further developed into the Projected Gradient Descent method or
 PGD, where multiple small steps are taken in the direction that will decrease the
 loss for an incorrect class. Like FGSM, the perturbations are bounded by a
 preconceived small number.
@@ -162,10 +162,11 @@ preconceived small number.
 
 #+begin_comment
 In the interest of time, I will leave us with just these two methods, but sufficied
-to say, that when it comes to many white-box methods, there is a consistent
-them. That being a 'suitably-small' value to perturb the image by. In this diagram,
-we are referring to the $r$ value, the maximum amount of perturbation that can be
-applied. This $r$ therefore defines a region upon which an adversarial can be found within.
+to say, that when it comes to many white-box methods for creating adversarial
+examples, there is a consistent theme. That being a 'suitably-small' value to perturb
+the image by. In this diagram, we are referring to the $r$ value, the maximum amount
+of perturbation that can be applied. This $r$ therefore defines a region upon which
+an adversarial example can be found.
 #+end_comment
 
 #+ATTR_LATEX: :width 0.5\textwidth
@@ -174,9 +175,9 @@ applied. This $r$ therefore defines a region upon which an adversarial can be fo
 ** Amount of change is important
 
 #+begin_comment
-Certainly, this suitably small value, the maximum amount of perturbation is
+Certainly, this suitably small value, the maximum amount of perturbation, is
 important. The larger this value gets, the less like the original image the
-adversarial becomes. One could ask, at what point does a 3 no longer look like a 3,
+adversarial example becomes. One could ask, at what point does a 3 no longer look like a 3,
 even too the human. At that point, one could suppose, we have perturbed the image too much.
 #+end_comment
 
@@ -188,7 +189,7 @@ even too the human. At that point, one could suppose, we have perturbed the imag
 And while for images, it is trivial to look at the potential adversarial example and
 see that it still looks likes a panda and still looks like a number 3 despite any
 modification to the image, for non-image data, may I ask you how much perturbation
-can I apply to each data point before I've perturbed it too much?
+can I apply to each data point before I've changed the data point too much?
 
 In this example of measurements of 3 types of flowers, will perturbing any data point
 here 'push' it past any true class boundaries from one type of flower into another?
@@ -199,23 +200,14 @@ Here we expose the problem with 'suitably-small', how small should small be?
 #+ATTR_LATEX: :width 0.7\textwidth
 [[file:images/iris.png]]
 
-** 
-:PROPERTIES:
-:BEAMER_OPT: plain,c
-:END:
-
-#+begin_center
-\vspace{1em}\Huge Our work
-#+end_center
-
-
 ** Perturbations shouldn't pass class boundaries
 
 #+begin_comment
 To answer the question of how small is suitably-small, we must understand
 firstly that any perturbation to a data point such as $x_i$ here should not pass any
 true class boundary. If we did so, we could find what we think is an adversarial
-example, but is in actual fact a true change of class.
+example, but is in actual fact a true change of class as a result of our
+perturbation, or change to $x_i$.
 #+end_comment
 
 \begin{figure}
@@ -244,14 +236,16 @@ point over true class boundaries.
 ** Estimated boundaries can be deceiving
 
 #+begin_comment
-Secondly, when we do attempt to estimate how close or far away class boundaries could
-be, we may be very wrong due to the amount of information we currently have. In this
-example on the left we have only two data points from two classes. Any
-self-respecting person may then put the class boundary slap-bang centre between these
-two classes. But, if we were to sample or get more data, we may find that our initial
-assumptions were wrong.
+Secondly, when we do attempt to estimate how close or far away these true class
+boundaries could be, we may be very wrong due to the amount of information we
+currently have. In this example on the left, we have only two data points from two
+classes. Any self-respecting person may then put the class boundary slap-bang centre
+between these two classes. But, if we were to sample or get more data, we may find
+that our initial assumptions were wrong, and that the true class boundary is indeed
+more complicated.
 
-So sparse amounts of information presents trust issues with our estimations.
+So sparse amounts of information presents trust issues with our estimations of our
+estimations of the class boundaries.
 #+end_comment
 
 *** Figure 2                                                          :BMCOL:
@@ -308,14 +302,14 @@ So sparse amounts of information presents trust issues with our estimations.
 ** Estimating Sparsity/Density
 
 #+begin_comment
-To estimate the relative sparsity or density of sample, we can use a radial basis
+To estimate the relative sparsity or density of sampling, we then use a radial basis
 function centred on each point and measure the distance between this point and all
-other points of the same class. Our estimation of density is the sum of these
-kernels.
+other points of the same class. Our estimation of density at a single point is the
+sum of these kernels.
 
-If the sum of these kernels is larger, then we have lots of information about a
-particular class in this area near $x$. So we can be more confident about what we can
-estimate about this classes boundary in this way.
+If the sum is larger, then we have lots of information about a particular class in
+this area near $x$. So we can be more confident about what we can estimate about this
+classes boundary.
 #+end_comment
 
 \begin{equation}
@@ -338,17 +332,17 @@ data points $X^c$ of class $c$ (Eq.~\ref{eq:density}).
 ** Expansion
 
 #+begin_comment
-Once we have our confidence of estimation of class boundaries with the RBF functions,
-we can create our neighbourhoods for which we wish to search for adversarial
-examples.
+Once we have measured the density with which to estimate class boundaries, we can
+create our neighbourhoods for which we wish to search for adversarial examples.
 
-Our expansion of neighbourhoods should stop when it touches the neighbourhood of a
-different class, and it's expansion should be tempered by the density of information
-in that area. So for each iteration we increase the size of neighbourhood for each
-data point, this step size is smaller in areas where we have less sample, and we stop
-iterating when the neighbourhood touches that of another class.
+This iterative expansion of neighbourhoods should stop when it touches the
+neighbourhood of a different class, and it's expansion should be tempered by the
+sparsity of information in that area. So for each iteration we increase the size of
+neighbourhood for each data point, this step size is smaller in areas where we have
+less samples of data, and we stop iterating when the neighbourhood touches that of another
+class.
 
-When we perform this for every data point simultaneously, we will have a
+When we perform this iteration for every data point simultaneously, we will have a
 neighbourhood size that is different for each data point, we have a set of adapted
 neighbourhoods for our data, hence the title of our method adaptive neighbourhoods.
 #+end_comment
@@ -376,7 +370,7 @@ neighbourhoods for our data, hence the title of our method adaptive neighbourhoo
 \end{figure}
 
 #+begin_center
-\vspace{2em}Iterative $\varepsilon$-expansion process in a binary class scenario. The
+\vspace{2em}Iterative \varepsilon-expansion process in a binary class scenario. The
 two classes are distinguished by the dotted and solid circles.\vspace{1em}
 #+end_center
 
@@ -396,17 +390,21 @@ two classes are distinguished by the dotted and solid circles.\vspace{1em}
 \vspace{1em}\Huge Results
 #+end_center
 
+#+begin_comment
+Using this method, I would like to illustrate it's contribution to existing
+adversarial example generation methods.
+#+end_comment
+
 
 ** Iris Dataset
 
 #+begin_comment
-Using this method, I would like to illustrate it's contribution to existing
-adversarial example generation methods. Firstly, we have a very simple task. The
-classification of Iris flower types, the measurement of the petal and sepal. On the
-right, we see we have generated neighbourhoods for which adversarial examples can be
-searched within. Notice that in dense regions of single classes, the neighbourhoods
-are larger, but in sparse regions, we can be less sure of the class boundaries and as
-such the generated neighbourhoods are small.
+Firstly, we have a very simple task. The classification of Iris flower types, using
+the measurement of the petal and sepal. On the right, we see we have generated
+neighbourhoods for which adversarial examples can be searched within. Notice that in
+dense regions of single classes, the neighbourhoods are larger, but in sparse
+regions, we can be less sure of the class boundaries and as such the generated
+neighbourhoods are small.
 #+end_comment
 
 *** Problem statement                                                 :BMCOL:
@@ -441,7 +439,7 @@ understand at a glance.
 
 But there are two primary patterns to these numbers that I would like to point
 out. The first is that by combining, say FGSM with adaptive neighbourhoods, the
-attacks or generating adversarial examples is much stronger. We are able to further
+attacks or generation of adversarial examples is much stronger. We are able to further
 reduce accuracy of the model thanks to adapted size of neighbourhoods. Secondly, when
 using adaptive neighbourhoods with FGSM and PGD, we are also able to improve the
 defence.
@@ -477,15 +475,15 @@ PGD+AN & 0.9936 (0.0193) & 0.9472 (0.0642) & 0.9472 (0.0642) & \textbf{0.8679 (0
 ** Adversarial Training for Solar Burst Detection
 
 #+begin_comment
-Our second set of results we will look at today is from the detection of solar bursts
-from our sun. Put simply, a solar burst is the ejection of plasma from our sun that
-interacts with solar winds that emits of sound. This sound can be heard from earth
-and visualised in this image format. There is a pretty distinctive pattern to these
-solar bursts, which we wish to automatically detect.
+Our second set of results we will look at today, is from the detection of solar
+bursts. Put simply, a solar burst is the ejection of plasma from our sun that
+interacts with solar winds that emits of sound due to friction. This sound can be
+heard from earth and visualised in this image format. There is a pretty distinctive
+pattern to these solar bursts, which we wish to automatically detect.
 
 In this example, we have the true solar burst in the left column in red. And we have
 the model predictions in the right-hand column in blue. Without any perturbations, the
-model is able to localise the burst. We apply perturbation with PGD, FGSM, or another
+model is able to localise the burst. When we apply perturbation with PGD, FGSM, or another
 method designed for object detection DAG, we see we are very easily able to create
 many false detections.
 #+end_comment
@@ -537,9 +535,9 @@ PGD+AN & 0.364 & 0.359 & 0.330 & 0.339 & 0.324 & 0.330 & \textbf{0.212}\\
 
 #+begin_comment
 So in summary what we see is adversarial example generation methods such as FGSM &
-PGD can benefit from the adaptive neighbourhood algorithm. Secondly, thanks for
+PGD can benefit from the adaptive neighbourhoods algorithm. Secondly, thanks for
 adaptive neighbourhoods, we can meaningfully create adversarial examples for
-non-image based data.
+non-image based data, enabling the use of adversarial examples for other tasks.
 #+end_comment
 
 
@@ -552,12 +550,12 @@ non-image based data.
 ** Source code
 
 #+begin_comment
-I would like to point our that I've made this work available on three mirrors:
-github, gitlab, and source hut; where you can find the source code and API to
-generate adaptive neighbourhoods for your own datasets.
+Before I conclude my talk, I would like to point out that I've made this work
+available on three mirrors: github, gitlab, and source hut; where you can find the
+source code and API to generate adapted neighbourhoods for your own datasets.
 
 Some more work needs to be done in making this iterative version of algorithm quicker
-to run, but nevertheless, it is free to use now.
+to run, but nevertheless, it is available to use now.
 #+end_comment
 
 #+ATTR_LATEX: :width 0.8\textwidth
@@ -572,7 +570,7 @@ to run, but nevertheless, it is free to use now.
 ** Link to the Slides
 
 #+begin_comment
-The presentation and source code to build it is freely available online, you can find
+Also, the presentation and source code to build it, is freely available online, you can find
 it using this link to github.
 #+end_comment
 
